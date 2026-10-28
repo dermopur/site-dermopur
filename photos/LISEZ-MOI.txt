@@ -1,0 +1,18 @@
+Déposez ici vos photos, avec exactement ces noms (en minuscules, en .jpg).
+Pour l'instant, chaque fichier est une image neutre « Photo à venir » :
+remplacez-la par votre vraie photo, en gardant le même nom.
+
+accueil.jpg                  grande photo de l'accueil (verticale idéalement)
+portrait.jpg                 votre photo
+ambiance-1.jpg               le cabinet (réservé pour plus tard)
+ambiance-2.jpg               le cabinet (réservé pour plus tard)
+ambiance-3.jpg               le cabinet (réservé pour plus tard)
+sourcils-hairstroke.jpg      Sourcils Hairstroke / Poil à poil
+sourcils-microshading.jpg    Sourcils Microshading
+ras-de-cils.jpg              Ras de cils supérieur
+levres.jpg                   Lèvres complètes
+grain-de-beaute.jpg          Grain de beauté
+taches-de-rousseur.jpg       Taches de rousseur
+
+Photos de clients (avant / après) : uniquement avec leur accord écrit.
+Plus de détails dans le fichier GUIDE.md.
