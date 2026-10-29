@@ -173,9 +173,9 @@ Toutes les photos vont dans le dossier **`photos`**. Toutes les photos sont en p
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
 | `ras-de-cils.jpg` | Ras de cils supérieur |
-| `levres.jpg` | Lèvres complètes |
+| `levres-avant.jpg`, `levres-apres.jpg` | Lèvres complètes (curseur Avant / Après) |
 | `grain-de-beaute.jpg` | Grain de beauté |
-| `taches-de-rousseur.jpg` | Taches de rousseur |
+| `taches-avant.jpg`, `taches-apres.jpg` | Taches de rousseur (curseur Avant / Après) |
 | `ambiance-1.jpg`, `ambiance-2.jpg`, `ambiance-3.jpg` | Réservées pour des photos du cabinet (pas encore affichées) |
 
 ⚠️ **Photos de clients (avant / après)** : publiez-les uniquement avec leur accord écrit.
@@ -289,18 +289,24 @@ Il faut parfois **plusieurs semaines** avant de voir les premiers effets.
 
 ---
 
-## 10. Le curseur « Avant / Après » de l'accueil
+## 10. Le curseur « Avant / Après » des soins
 
-Fichier : **`mes-contenus/avant-apres.js`**
+Pour les lèvres et les taches de rousseur, la photo du soin est remplacée par un curseur à faire glisser : on compare l'avant et l'après. Il apparaît dans la carte de l'accueil et dans la fiche de la page « Nos soins ».
 
-Sur la page d'accueil, la partie « Voir la différence » permet de faire glisser un curseur pour comparer l'avant et l'après. Chaque bloc du fichier est une comparaison (lèvres, taches de rousseur…).
+Fichier : **`mes-contenus/prestations-et-tarifs.js`**. Un soin a un curseur quand il contient ces lignes :
 
-Pour **ajouter** une comparaison :
-1. Préparez deux photos **de même taille**, de la même zone et cadrées de la même façon (une « avant », une « après »).
-2. Envoyez-les dans le dossier `photos`, en JPG.
-3. Dans `avant-apres.js`, copiez un bloc (de `{` jusqu'à `},`), collez-le en dessous, puis changez le titre, les noms des deux photos et le `ratio` (largeur / hauteur de vos photos, par exemple `"900 / 600"`).
+```
+photoAvant: "levres-avant.jpg",
+photoApres: "levres-apres.jpg",
+curseurFocus: "50% 50%",
+```
 
-Pour **retirer** une comparaison, supprimez son bloc. Si la liste est vide, la partie disparaît. N'utilisez des photos de clients qu'avec leur accord écrit.
+- `photoAvant` et `photoApres` : deux photos de **même taille**, de la même zone, cadrées de la même façon, envoyées dans le dossier `photos`.
+- `curseurFocus` (facultatif) : la zone visible quand la photo est recadrée dans la carte. « 50% 50% » = le centre ; augmentez le premier nombre pour montrer davantage la droite de la photo.
+- Pour **ajouter** un curseur sur un autre soin, ajoutez ces trois lignes à ce soin (et mettez `photo: ""`).
+- Pour **retirer** le curseur d'un soin, supprimez ces trois lignes et remettez `photo: "nom-de-la-photo.jpg"`.
+
+Photos de clients : uniquement avec leur accord écrit.
 
 ## 11. Les questions et réponses déroulantes
 

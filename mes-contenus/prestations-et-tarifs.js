@@ -25,6 +25,9 @@
                     Le site affiche alors « Entre 50 € et 100 € »
    - photo        : le nom du fichier photo, à déposer dans le dossier « photos »
                     (laissez "" pour un soin sans photo)
+   - photoAvant, photoApres, curseurFocus : (facultatif) deux photos de même taille
+                    pour un curseur « Avant / Après » à la place de la photo.
+                    curseurFocus règle la zone visible (par exemple "50% 50%")
    - description  : quelques phrases pour expliquer le soin
                     (laissez "" tant que le texte n'est pas prêt)
    - bonASavoir   : une précaution ou une info utile (laissez "" si rien)
@@ -62,7 +65,10 @@ var PRESTATIONS = [
     categorie: "Lèvres",
     minutes: 165,
     prix: 180,
-    photo: "levres.jpg",
+    photo: "",
+    photoAvant: "levres-avant.jpg",
+    photoApres: "levres-apres.jpg",
+    curseurFocus: "50% 50%",
     description: "Un ombrage très fondu sur l'ensemble des lèvres, pour un rendu qui reste naturel. Après quelques semaines de cicatrisation, la couleur laisse place à un effet « lèvres mordues », frais et poudré.",
     bonASavoir: "Juste après la séance, la couleur est intense et brillante, et les lèvres sont légèrement gonflées : c'est normal. La couleur s'adoucit ensuite d'environ 30 à 40 % pendant la cicatrisation."
   },
@@ -80,7 +86,10 @@ var PRESTATIONS = [
     categorie: "Visage",
     minutes: 120,
     prix: 100,
-    photo: "taches-de-rousseur.jpg",
+    photo: "",
+    photoAvant: "taches-avant.jpg",
+    photoApres: "taches-apres.jpg",
+    curseurFocus: "62% 50%",
     description: "Des taches de rousseur dessinées sur mesure, de quelques touches discrètes à un effet « retour de vacances » plus affirmé. Il est toujours préférable de commencer en douceur lors de la première séance : on peut en rajouter ensuite, lors de la retouche.",
     bonASavoir: "Les petites croûtes du début tombent pendant la cicatrisation. La couleur s'adoucit ensuite d'environ 30 à 40 % pour prendre sa teinte définitive."
   },

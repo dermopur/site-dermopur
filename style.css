@@ -618,9 +618,7 @@ a { transition: color .6s ease; }
 .accordeon__corps .chrono { margin-top: .5rem; }
 .accordeon__corps .liste-soin { margin-bottom: 0; }
 
-/* ---- Module avant / après : curseur à faire glisser ---- */
-.avant-apres { display: grid; gap: clamp(2.5rem, 5vw, 4rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); margin-top: 4rem; }
-.avant-apres__module { margin: 0; }
+/* ---- Curseur avant / après (cartes et fiches des soins) ---- */
 .aa-cadre { position: relative; overflow: hidden; aspect-ratio: var(--ratio, 4 / 3); background: var(--pierre); border: 1px solid rgba(110, 94, 80, .14); cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .aa-cadre img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
 .aa-avant { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
@@ -634,7 +632,6 @@ a { transition: color .6s ease; }
 .aa-etiquette--apres { right: 1rem; }
 .aa-curseur { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
 .aa-cadre:focus-within { outline: 1px solid var(--cacao); outline-offset: 5px; }
-.avant-apres__module figcaption { text-align: center; margin-top: 1.3rem; font-family: var(--titres); font-size: 1.6rem; color: var(--cacao); }
 
 /* ---- Menu : six onglets ---- */
 @media (min-width: 1260px) and (max-width: 1379px) {
@@ -643,3 +640,25 @@ a { transition: color .6s ease; }
   .menu__rdv { letter-spacing: .16em; padding: .85em 1.1em; }
 }
 @media (prefers-reduced-motion: reduce) { .carte__photo img, .prestation__photo img, .portrait-petit img { transition: none; } .carte:hover .carte__photo img, .prestation:hover .prestation__photo img, .portrait-petit:hover img { transform: none; } }
+
+/* ---- Curseur dans les cartes et les fiches : mêmes proportions que les photos ---- */
+.carte__photo, .carte__photo.aa-cadre { aspect-ratio: 5 / 4; }
+.carte__photo.aa-cadre { border: 0; }
+.prestation__photo.aa-cadre { aspect-ratio: 4 / 5; border: 0; }
+@media (min-width: 900px) { .prestation__photo.aa-cadre { aspect-ratio: auto; min-height: 420px; } }
+.carte__photo.aa-cadre .aa-bouton { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+.carte__photo.aa-cadre .aa-bouton svg { width: 20px; height: 20px; }
+.carte__photo.aa-cadre .aa-etiquette { bottom: .8rem; font-size: .55rem; padding: .55em .9em; letter-spacing: .28em; }
+.carte__photo.aa-cadre .aa-etiquette--avant { left: .8rem; }
+.carte__photo.aa-cadre .aa-etiquette--apres { right: .8rem; }
+.carte:hover .aa-cadre img, .prestation:hover .aa-cadre img { transform: none; }
+/* numéros du déroulement : chiffres simples (1, 2, 3, 4) */
+.accordeon__num { font-variant-numeric: lining-nums; font-feature-settings: "lnum"; }
+
+/* ---- Fiches avec curseur : grand curseur pleine largeur, photos entières ---- */
+.prestation--curseur .prestation__photo.aa-cadre { aspect-ratio: 4 / 3; min-height: 0; }
+@media (min-width: 900px) {
+  .prestation--curseur { grid-template-columns: 1fr; }
+  .prestation--curseur .prestation__photo.aa-cadre { aspect-ratio: auto; height: clamp(340px, 46vw, 560px); }
+  .prestation--curseur .prestation__texte { padding: 3rem 3.6rem 3.4rem; }
+}

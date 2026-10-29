@@ -85,7 +85,21 @@
       img.addEventListener("load", function () { cadre.classList.remove("photo--absente"); });
     });
   }
+  var FLECHES = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function aUnCurseur(p) { return !!(p.photoAvant && p.photoApres); }
+  function aUnePhoto(p) { return !!p.photo || aUnCurseur(p); }
+  // photo d'un soin : curseur « Avant / Après » si le soin en a un, sinon photo simple
   function cadrePhoto(p, classe, alt) {
+    if (aUnCurseur(p)) {
+      var pos = p.curseurFocus ? ' style="object-position:' + echapper(p.curseurFocus) + '"' : "";
+      return '<div class="' + classe + ' photo aa-cadre" style="--pos:50%">' +
+        '<img class="aa-apres" src="photos/' + echapper(p.photoApres) + '" alt="' + echapper(p.nom + " : après") + '" loading="lazy"' + pos + '>' +
+        '<img class="aa-avant" src="photos/' + echapper(p.photoAvant) + '" alt="' + echapper(p.nom + " : avant") + '" loading="lazy"' + pos + '>' +
+        '<span class="aa-etiquette aa-etiquette--avant">Avant</span><span class="aa-etiquette aa-etiquette--apres">Après</span>' +
+        '<span class="aa-poignee"><span class="aa-bouton">' + FLECHES + '</span></span>' +
+        '<input class="aa-curseur" type="range" min="0" max="100" value="50" aria-label="Comparer l\'avant et l\'après : ' + echapper(p.nom) + '">' +
+        '</div>';
+    }
     if (!p.photo) return "";
     return '<div class="' + classe + ' photo"><img src="photos/' + echapper(p.photo) + '" alt="' + echapper(alt) + '" loading="lazy"></div>';
   }
@@ -124,7 +138,7 @@
   if (liste) {
     liste.innerHTML = parCategorie().map(function (g) {
       return '<h2 class="categorie-titre">' + echapper(g.nom) + '</h2>' + g.liste.map(function (p) {
-        return '<article class="prestation' + (p.photo ? '' : ' prestation--sans-photo') + '" id="' + identifiant(p.nom) + '">' +
+        return '<article class="prestation' + (aUnePhoto(p) ? '' : ' prestation--sans-photo') + (aUnCurseur(p) ? ' prestation--curseur' : '') + '" id="' + identifiant(p.nom) + '">' +
           cadrePhoto(p, "prestation__photo", "Photo : " + p.nom) +
           '<div class="prestation__texte">' +
             '<h3>' + echapper(p.nom) + '</h3>' +
@@ -510,42 +524,27 @@
     if (suite) suite.value = new URL("merci.html", location.href).href;
   }
 
-  /* ---------- Avant / après : curseur à faire glisser (mes-contenus/avant-apres.js) ---------- */
-  var zoneAA = $("#avant-apres-liste");
-  var listeAA = window.AVANT_APRES || [];
-  if (zoneAA && listeAA.length) {
-    $("#avant-apres").hidden = false;
-    var fleches = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    zoneAA.innerHTML = listeAA.map(function (a) {
-      return '<figure class="avant-apres__module"><div class="aa-cadre" style="--ratio:' + echapper(a.ratio || "4 / 3") + ';--pos:50%">' +
-        '<img class="aa-apres" src="' + echapper(a.apres) + '" alt="' + echapper((a.alt || a.titre) + " : après") + '" loading="lazy">' +
-        '<img class="aa-avant" src="' + echapper(a.avant) + '" alt="' + echapper((a.alt || a.titre) + " : avant") + '" loading="lazy">' +
-        '<span class="aa-etiquette aa-etiquette--avant">Avant</span><span class="aa-etiquette aa-etiquette--apres">Après</span>' +
-        '<span class="aa-poignee"><span class="aa-bouton">' + fleches + '</span></span>' +
-        '<input class="aa-curseur" type="range" min="0" max="100" value="50" aria-label="Comparer l\'avant et l\'après : ' + echapper(a.titre) + '">' +
-        '</div><figcaption>' + echapper(a.titre) + '</figcaption></figure>';
-    }).join("");
-    $$(".aa-cadre", zoneAA).forEach(function (cadre) {
-      var curseur = $(".aa-curseur", cadre), actif = false;
-      function placer(pct) {
-        pct = Math.max(0, Math.min(100, pct));
-        cadre.style.setProperty("--pos", pct + "%");
-        curseur.value = Math.round(pct);
-      }
-      function depuis(e) {
-        var r = cadre.getBoundingClientRect();
-        placer((e.clientX - r.left) / r.width * 100);
-      }
-      cadre.addEventListener("pointerdown", function (e) {
-        actif = true;
-        try { cadre.setPointerCapture(e.pointerId); } catch (err) { /* rien */ }
-        depuis(e);
-      });
-      cadre.addEventListener("pointermove", function (e) { if (actif) depuis(e); });
-      ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (nom) { cadre.addEventListener(nom, function () { actif = false; }); });
-      curseur.addEventListener("input", function () { placer(+curseur.value); });
+  /* ---------- Curseurs « Avant / Après » (dans les cartes et les fiches des soins) ---------- */
+  $$(".aa-cadre").forEach(function (cadre) {
+    var curseur = $(".aa-curseur", cadre), actif = false;
+    function placer(pct) {
+      pct = Math.max(0, Math.min(100, pct));
+      cadre.style.setProperty("--pos", pct + "%");
+      curseur.value = Math.round(pct);
+    }
+    function depuis(e) {
+      var r = cadre.getBoundingClientRect();
+      placer((e.clientX - r.left) / r.width * 100);
+    }
+    cadre.addEventListener("pointerdown", function (e) {
+      actif = true;
+      try { cadre.setPointerCapture(e.pointerId); } catch (err) { /* rien */ }
+      depuis(e);
     });
-  }
+    cadre.addEventListener("pointermove", function (e) { if (actif) depuis(e); });
+    ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (nom) { cadre.addEventListener(nom, function () { actif = false; }); });
+    curseur.addEventListener("input", function () { placer(+curseur.value); });
+  });
 
   /* ---------- Accordéons : ouverture et fermeture en douceur ---------- */
   var sansAnimation = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -9,9 +9,9 @@ ambiance-3.jpg               le cabinet (réservé pour plus tard)
 sourcils-hairstroke.jpg      Sourcils Hairstroke / Poil à poil
 sourcils-microshading.jpg    Sourcils Microshading
 ras-de-cils.jpg              Ras de cils supérieur
-levres.jpg                   Lèvres complètes
+levres-avant.jpg / levres-apres.jpg     Lèvres (curseur Avant / Après)
 grain-de-beaute.jpg          Grain de beauté
-taches-de-rousseur.jpg       Taches de rousseur
+taches-avant.jpg / taches-apres.jpg     Taches de rousseur (curseur Avant / Après)
 
 Photos de clients (avant / après) : uniquement avec leur accord écrit.
 Plus de détails dans le fichier GUIDE.md.
