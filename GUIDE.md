@@ -169,7 +169,7 @@ Toutes les photos vont dans le dossier **`photos`**. Les photos des soins sont e
 
 | Nom du fichier | Où elle apparaît |
 |---|---|
-| `accueil.jpg` | Grande photo en haut de l'accueil (format vertical idéal ; pour l'instant, la même que les sourcils microshading) |
+| `accueil.jpg` | Grande photo en haut de l'accueil : la photo d'Indie (format vertical idéal) |
 | `portrait.jpg` | Votre photo, partie « Moi, c'est Indie » |
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
