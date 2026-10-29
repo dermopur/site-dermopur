@@ -291,8 +291,7 @@
         var badge = s === 0 ? "Cette semaine" : s === 1 ? "Semaine prochaine" : "";
         html += '<section class="semaine"><div class="semaine__titre"><h2>Semaine du ' + jourMois(debutSem) + ' au ' + jourMois(finSem) + '</h2>' +
           (badge ? '<span class="semaine__badge">' + badge + '</span>' : '') + '</div>' +
-          '<p class="semaine__resume">' + (total ? "<strong>" + total + " horaire" + (total > 1 ? "s" : "") + " possible" + (total > 1 ? "s" : "") + "</strong> pour ce soin." :
-            "Plus de place cette semaine-là pour ce soin. Appelez Indie : un créneau se libère parfois.") + '</p>' +
+          '<p class="semaine__resume">' + (total ? "" : "Plus de place cette semaine-là pour ce soin. Appelez Indie : un créneau se libère parfois.") + '</p>' +
           (lignes || '<p class="jour-ligne__info">Cette semaine est terminée.</p>') + '</section>';
       }
       zonePlanning.innerHTML = html;

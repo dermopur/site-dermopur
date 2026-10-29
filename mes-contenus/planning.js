@@ -2,7 +2,7 @@
    MON PLANNING
    ---------------------------------------------------------------------
    Le site calcule tout seul les créneaux libres des prochaines
-   semaines, de 15 minutes en 15 minutes, pour la prestation choisie
+   semaines, d'heure en heure (13h, 14h, 15h…), pour la prestation choisie
    par le client (sa durée est dans « prestations-et-tarifs.js »).
 
    Vous n'avez que 3 choses à tenir à jour :
@@ -11,8 +11,8 @@
      3. les RENDEZ-VOUS RÉSERVÉS (à chaque nouveau rendez-vous)
 
    Règles d'écriture :
-   - Une plage d'horaires :            "10h00-19h00"
-   - Plusieurs plages le même jour :   "10h00-13h00, 14h00-19h00"
+   - Une plage d'horaires :            "13h00-19h00"
+   - Plusieurs plages le même jour :   "13h00-15h00, 16h00-19h00"
    - Un horaire de début précis seul : "17h00"   (le rendez-vous commence
      à 17h, quelle que soit sa durée)
    - Un jour sans rendez-vous :        "fermé"
@@ -25,11 +25,11 @@
    Le rendez-vous doit être terminé avant la fin de la plage. */
 var HORAIRES_HABITUELS = {
   lundi:    "fermé",
-  mardi:    "10h00-19h00",
-  mercredi: "10h00-19h00",
-  jeudi:    "10h00-19h00",
-  vendredi: "10h00-19h00",
-  samedi:   "10h00-19h00",
+  mardi:    "fermé",
+  mercredi: "fermé",
+  jeudi:    "13h00-19h00",
+  vendredi: "13h00-19h00",
+  samedi:   "13h00-19h00",
   dimanche: "fermé"
 };
 
@@ -60,6 +60,6 @@ var RENDEZ_VOUS_RESERVES = [
 
 /* ---------- 4. RÉGLAGES (à changer rarement) ---------- */
 var PAUSE_ENTRE_PRESTATIONS = 30; // minutes bloquées après chaque rendez-vous
-var PRECISION_DES_CRENEAUX = 15;  // les créneaux commencent toutes les 15 minutes
+var PRECISION_DES_CRENEAUX = 60;  // les créneaux commencent toutes les heures (13h, 14h, 15h…)
 var DELAI_MINIMUM = 24;           // heures : réservation en ligne au plus tard 24h avant
 var NOMBRE_DE_SEMAINES = 2;       // nombre de semaines affichées

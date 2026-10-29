@@ -87,7 +87,7 @@ Pas de panique : GitHub garde **toutes** les anciennes versions de chaque fichie
 
 Fichier : **`mes-contenus/planning.js`**
 
-Sur les pages « Disponibilités » et « Contact », le client choisit d'abord **son soin**, puis le site lui montre **toutes les heures de début possibles**, de 15 minutes en 15 minutes, sur la semaine en cours et la suivante. Le site calcule tout seul :
+Sur les pages « Disponibilités » et « Contact », le client choisit d'abord **son soin**, puis le site lui montre **toutes les heures de début possibles**, d'heure en heure (13h, 14h, 15h…), sur la semaine en cours et la suivante. Le site calcule tout seul :
 - que le soin se termine avant la fin de vos horaires (de 45 min à 2h45 selon le soin) ;
 - qu'elle ne chevauche pas un rendez-vous déjà réservé ;
 - qu'il reste **30 minutes de pause entre deux soins** ;
@@ -102,12 +102,12 @@ Vous n'avez qu'à tenir à jour 3 choses.
 ```
 var HORAIRES_HABITUELS = {
   lundi:    "fermé",
-  mardi:    "10h00-19h00",
+  jeudi:    "13h00-19h00",
   ...
 };
 ```
-- Une plage : `"10h00-19h00"` (le rendez-vous doit être fini avant 19h).
-- Plusieurs plages : `"10h00-13h00, 14h00-19h00"` (par exemple pour une pause déjeuner).
+- Une plage : `"13h00-19h00"` (le rendez-vous doit être fini avant 19h).
+- Plusieurs plages : `"13h00-15h00, 16h00-19h00"` (par exemple pour une pause).
 - Une heure de début seule : `"17h00"` (le rendez-vous commence à 17h, quelle que soit sa durée).
 
 Si vous changez vos horaires, pensez aussi à changer le tableau des horaires de la page `contact.html`.
@@ -135,7 +135,7 @@ Le site bloque ce créneau et les 30 minutes de pause autour. Vous pouvez suppri
 
 ⚠️ Chaque ligne est entre guillemets `" "` et se termine par une virgule.
 
-**Réglages** (en bas du fichier) : la pause entre deux soins (30 min), la précision des créneaux (15 min), le délai minimum avant un rendez-vous (24 h) et le nombre de semaines affichées (2).
+**Réglages** (en bas du fichier) : la pause entre deux soins (30 min), l'écart entre les créneaux proposés (60 min : une heure de début toutes les heures), le délai minimum avant un rendez-vous (24 h) et le nombre de semaines affichées (2).
 
 ---
 
@@ -169,8 +169,7 @@ Toutes les photos vont dans le dossier **`photos`**. Toutes les photos sont en p
 
 | Nom du fichier | Où elle apparaît |
 |---|---|
-| `accueil.jpg` | Grande photo en haut de l'accueil : Indie en séance (format vertical idéal) |
-| `portrait.jpg` | Photo de la partie « Moi, c'est Indie » (pour l'instant, le tracé poil à poil) |
+| `portrait.jpg` | Petite photo ronde de la partie « Moi, c'est Indie » (format carré idéal) |
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
 | `ras-de-cils.jpg` | Ras de cils supérieur |
