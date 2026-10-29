@@ -53,6 +53,7 @@ C'est enregistré ! ✅
 1. Attendez **1 à 2 minutes**.
 2. Ouvrez votre site et **rechargez la page** (la flèche en rond, ou tirez la page vers le bas sur téléphone).
 3. Si l'ancienne version s'affiche encore, attendez une minute de plus et rechargez à nouveau.
+4. Si elle s'affiche encore après quelques minutes, c'est votre navigateur qui garde l'ancienne version en mémoire : ouvrez le site dans une **fenêtre de navigation privée** (ou rechargez en forçant : Ctrl + Maj + R sur ordinateur, Cmd + Maj + R sur Mac).
 
 Pour voir où en est la mise à jour : sur GitHub, cliquez sur l'onglet **« Actions »** en haut. Un rond orange 🟠 veut dire « en cours ». Une coche verte ✅ veut dire « terminé ».
 
