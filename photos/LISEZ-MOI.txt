@@ -1,6 +1,6 @@
 Déposez ici vos photos, avec exactement ces noms (en minuscules, en .jpg).
-Les photos des soins sont en place. portrait.jpg est encore une image neutre
-« Photo à venir » : remplacez-la par votre vraie photo, en gardant le même nom.
+Toutes les photos sont en place. Pour en changer une, envoyez la nouvelle
+en gardant exactement le même nom.
 
 accueil.jpg                  grande photo de l'accueil (verticale idéalement)
 portrait.jpg                 votre photo

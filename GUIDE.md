@@ -165,11 +165,11 @@ Les nouveaux prix apparaissent partout : accueil, page « Nos soins », tableau 
 
 ## 3. Mettre vos photos
 
-Toutes les photos vont dans le dossier **`photos`**. Les photos des soins sont en place ; `portrait.jpg` est encore une image neutre « Photo à venir ». Pour changer une photo, envoyez la nouvelle **avec exactement le même nom**.
+Toutes les photos vont dans le dossier **`photos`**. Toutes les photos sont en place (accueil, portrait et soins). Pour changer une photo, envoyez la nouvelle **avec exactement le même nom**.
 
 | Nom du fichier | Où elle apparaît |
 |---|---|
-| `accueil.jpg` | Grande photo en haut de l'accueil : la photo d'Indie (format vertical idéal) |
+| `accueil.jpg` | Grande photo en haut de l'accueil : le cabinet (format vertical idéal) |
 | `portrait.jpg` | Votre photo, partie « Moi, c'est Indie » |
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
