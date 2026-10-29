@@ -69,7 +69,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script>(function(){var r=document.documentElement;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('anim');window.SELECTEURS_REVEAL=".accueil__texte > *, .en-tete-page .conteneur > *, .section .centre > *, .section.appel .conteneur > *, .qui-suis-je > *, .carte, .prestation, .categorie-titre, .engagements li, .avis, .moyen, .accordeon, .avant-apres__module, .tableau-defile, .grille-contact > *, .section .encadre--info:not(.creneau-choisi)";setTimeout(function(){if(!r.getAttribute('data-anim-pret'))r.classList.remove('anim')},3500)})();</script>
+  <style>html.anim :is(.accueil__texte > *, .en-tete-page .conteneur > *, .section .centre > *, .section.appel .conteneur > *, .qui-suis-je > *, .carte, .prestation, .categorie-titre, .engagements li, .avis, .moyen, .accordeon, .avant-apres__module, .tableau-defile, .grille-contact > *, .section .encadre--info:not(.creneau-choisi)){transition:opacity 1.1s cubic-bezier(.22,.61,.36,1),transform 1.1s cubic-bezier(.22,.61,.36,1),box-shadow .5s,border-color .5s}html.anim :is(.accueil__texte > *, .en-tete-page .conteneur > *, .section .centre > *, .section.appel .conteneur > *, .qui-suis-je > *, .carte, .prestation, .categorie-titre, .engagements li, .avis, .moyen, .accordeon, .avant-apres__module, .tableau-defile, .grille-contact > *, .section .encadre--info:not(.creneau-choisi)):not(.vu){opacity:0;transform:translateY(18px)}</style>
 </head>
 <body>
   <a class="lien-evitement" href="#contenu">Aller directement au contenu</a>
@@ -94,6 +96,7 @@
           <li><a href="index.html" aria-current="page">Accueil</a></li>
           <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="avis.html">Avis</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -150,6 +153,18 @@
       </div>
     </section>
 
+    <section class="section section--ivoire" id="avant-apres" hidden>
+      <div class="conteneur">
+        <div class="centre">
+          <p class="surtitre">Avant / Après</p>
+          <h2>Voir la différence</h2>
+          <span class="filet"></span>
+          <p class="intro">Faites glisser le curseur pour comparer l'avant et l'après.</p>
+        </div>
+        <div class="avant-apres" id="avant-apres-liste"></div>
+      </div>
+    </section>
+
     <section class="section section--poudre">
       <div class="conteneur etroit centre">
         <p class="surtitre">Pour tous</p>
@@ -183,12 +198,12 @@
           <h2>Comment se passe votre projet ?</h2>
           <span class="filet"></span>
         </div>
-        <ol class="etapes">
-          <li><h3>Le premier diagnostic, offert</h3><p>Indie échange avec vous au studio sur votre envie, votre visage et le rendu souhaité. Un maquillage semi-permanent reste 1 à 3 ans : il mérite un temps de réflexion.</p></li>
-          <li><h3>Questionnaire et consentement</h3><p>Le questionnaire de santé vérifie l'absence de contre-indications. Le consentement éclairé vous explique la séance, la cicatrisation et la tenue.</p></li>
-          <li><h3>La séance</h3><p>Le tracé et le pigment sont choisis ensemble. Comptez de 45 min à 2h45 selon le soin.</p></li>
-          <li><h3>Cicatrisation et retouche</h3><p>La couleur s'adoucit d'environ 30 à 40 % en un mois. La retouche du mois suivant fixe le tout et perfectionne les détails.</p></li>
-        </ol>
+        <div class="accordeons">
+          <details class="accordeon" open><summary><span class="accordeon__titre"><span class="accordeon__num">01</span>Le premier diagnostic, offert</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><p>Indie échange avec vous au studio sur votre envie, votre visage et le rendu souhaité. Un maquillage semi-permanent reste 1 à 3 ans : il mérite un temps de réflexion.</p></div></div></details>
+          <details class="accordeon"><summary><span class="accordeon__titre"><span class="accordeon__num">02</span>Questionnaire et consentement</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><p>Le questionnaire de santé vérifie l'absence de contre-indications. Le consentement éclairé vous explique la séance, la cicatrisation et la tenue.</p></div></div></details>
+          <details class="accordeon"><summary><span class="accordeon__titre"><span class="accordeon__num">03</span>La séance</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><p>Le tracé et le pigment sont choisis ensemble. Comptez de 45 min à 2h45 selon le soin.</p></div></div></details>
+          <details class="accordeon"><summary><span class="accordeon__titre"><span class="accordeon__num">04</span>Cicatrisation et retouche</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><p>La couleur s'adoucit d'environ 30 à 40 % en un mois. La retouche du mois suivant fixe le tout et perfectionne les détails.</p></div></div></details>
+        </div>
         <p class="centre" style="margin-top:2.5rem"><a class="bouton" href="conseils.html">Les consignes avant et après la séance</a></p>
       </div>
     </section>
@@ -203,6 +218,7 @@
         </div>
         <div class="cartes cartes--avis" id="liste-avis"></div>
         <p class="boutons boutons--centre" style="margin-top:2rem" id="liens-avis"></p>
+        <p class="centre" style="margin-top:1.5rem"><a href="avis.html">Lire tous les avis</a></p>
       </div>
     </section>
 
@@ -246,6 +262,7 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="avis.html">Avis</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -267,6 +284,7 @@
 
   <script src="mes-contenus/prestations-et-tarifs.js"></script>
   <script src="mes-contenus/avis.js"></script>
-  <script src="site.js?v=10"></script>
+  <script src="mes-contenus/avant-apres.js"></script>
+  <script src="site.js?v=12"></script>
 </body>
 </html>

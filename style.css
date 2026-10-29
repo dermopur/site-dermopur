@@ -581,3 +581,65 @@ th, td { border-top: 1px solid var(--filet); }
 .portrait-petit { width: 190px; height: 190px; border-radius: 50%; overflow: hidden; border: 1px solid var(--nude); padding: 6px; background: var(--ivoire); flex: none; }
 .portrait-petit img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 @media (min-width: 900px) { .qui-suis-je { grid-template-columns: 220px 1fr; gap: 4.5rem; justify-items: start; } .portrait-petit { width: 210px; height: 210px; margin-top: 2.6rem; } }
+
+/* =========================================================
+   INTERACTIONS : étoiles, survols doux, accordéons, avant / après
+   ========================================================= */
+
+/* ---- Étoiles des avis en jaune ---- */
+.avis__etoiles { color: #f5b301; letter-spacing: .28em; font-size: 1.15rem; }
+
+/* ---- Survols très doux ---- */
+a { transition: color .6s ease; }
+.bouton { transition: background-color .7s ease, color .7s ease, border-color .7s ease, box-shadow .7s ease; }
+.menu li a, .carte__lien, .moyen, .heure, .duree, .heure--choisie { transition: color .6s ease, border-color .6s ease, background-color .6s ease, box-shadow .6s ease; }
+.carte__photo img, .prestation__photo img, .portrait-petit img { transition: transform 1.6s cubic-bezier(.22, .61, .36, 1); }
+.carte:hover .carte__photo img, .prestation:hover .prestation__photo img, .portrait-petit:hover img { transform: scale(1.01); }
+
+/* ---- Accordéons (questions / réponses) ---- */
+.accordeons { border-top: 1px solid var(--filet); max-width: 860px; margin: 3.5rem auto 0; }
+.etroit .accordeons { margin-top: 0; }
+.accordeon { border-bottom: 1px solid var(--filet); }
+.accordeon summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.8rem .2rem; }
+.accordeon summary::-webkit-details-marker { display: none; }
+.accordeon summary:focus-visible { outline: 1px solid var(--cacao); outline-offset: 4px; }
+.accordeon__titre { font-family: var(--titres); font-weight: 400; font-size: clamp(1.4rem, 2.8vw, 1.9rem); line-height: 1.2; color: var(--cacao); transition: color .6s ease; }
+.accordeon summary:hover .accordeon__titre { color: var(--taupe); }
+.accordeon__num { font-family: var(--titres); font-weight: 300; color: var(--nude); margin-right: 1.3rem; }
+.accordeon__signe { position: relative; width: 22px; height: 22px; flex: none; }
+.accordeon__signe::before, .accordeon__signe::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--cacao); transition: transform .6s ease; }
+.accordeon__signe::before { width: 22px; height: 1px; margin: -.5px 0 0 -11px; }
+.accordeon__signe::after { width: 1px; height: 22px; margin: -11px 0 0 -.5px; }
+.accordeon[open] .accordeon__signe::after { transform: rotate(90deg); }
+.accordeon__contenu { overflow: hidden; }
+.accordeon__corps { padding: 0 .2rem 2.4rem; max-width: 46em; }
+.accordeon__corps > :first-child { margin-top: 0; }
+.accordeon__corps h3 { margin-top: 1.8rem; font-size: 1.45rem; }
+.accordeon__corps .chrono { margin-top: .5rem; }
+.accordeon__corps .liste-soin { margin-bottom: 0; }
+
+/* ---- Module avant / après : curseur à faire glisser ---- */
+.avant-apres { display: grid; gap: clamp(2.5rem, 5vw, 4rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); margin-top: 4rem; }
+.avant-apres__module { margin: 0; }
+.aa-cadre { position: relative; overflow: hidden; aspect-ratio: var(--ratio, 4 / 3); background: var(--pierre); border: 1px solid rgba(110, 94, 80, .14); cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.aa-cadre img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+.aa-avant { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+.aa-poignee { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 0; pointer-events: none; }
+.aa-poignee::before { content: ""; position: absolute; top: 0; bottom: 0; left: -1px; width: 2px; background: rgba(255, 255, 255, .92); box-shadow: 0 0 14px rgba(46, 36, 32, .25); }
+.aa-bouton { position: absolute; top: 50%; left: 0; width: 56px; height: 56px; margin: -28px 0 0 -28px; display: grid; place-items: center; border-radius: 50%; background: rgba(248, 244, 238, .95); color: var(--cacao); border: 1px solid rgba(74, 56, 48, .3); box-shadow: 0 8px 28px rgba(46, 36, 32, .2); transition: transform .5s ease; }
+.aa-cadre:hover .aa-bouton { transform: scale(1.06); }
+.aa-bouton svg { width: 24px; height: 24px; }
+.aa-etiquette { position: absolute; bottom: 1rem; padding: .6em 1.1em; font: 500 .62rem/1 var(--texte); letter-spacing: .34em; text-transform: uppercase; color: #fff; background: rgba(46, 36, 32, .5); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); pointer-events: none; }
+.aa-etiquette--avant { left: 1rem; }
+.aa-etiquette--apres { right: 1rem; }
+.aa-curseur { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
+.aa-cadre:focus-within { outline: 1px solid var(--cacao); outline-offset: 5px; }
+.avant-apres__module figcaption { text-align: center; margin-top: 1.3rem; font-family: var(--titres); font-size: 1.6rem; color: var(--cacao); }
+
+/* ---- Menu : six onglets ---- */
+@media (min-width: 1260px) and (max-width: 1379px) {
+  .menu li a { letter-spacing: .12em; padding: .6em .4em; font-size: .66rem; }
+  .menu, .menu.ouvert { gap: .5rem; }
+  .menu__rdv { letter-spacing: .16em; padding: .85em 1.1em; }
+}
+@media (prefers-reduced-motion: reduce) { .carte__photo img, .prestation__photo img, .portrait-petit img { transition: none; } .carte:hover .carte__photo img, .prestation:hover .prestation__photo img, .portrait-petit:hover img { transform: none; } }

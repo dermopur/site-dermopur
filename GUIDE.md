@@ -262,7 +262,9 @@ Dans `mentions-legales.html`, l'hébergeur indiqué est GitHub. Si un jour vous 
 
 ## 8. Les avis Google sur le site
 
-Le site affiche quelques avis Google sur la page d'accueil, avec deux boutons possibles : « Voir tous les avis Google » et « Laisser un avis ».
+Les avis apparaissent à deux endroits : sur la page d'accueil et sur la page **Avis** du menu. Les étoiles sont en jaune.
+
+Chaque avis que vous ajoutez dans le fichier ci-dessous s'affiche sur les deux pages, avec deux boutons : « Voir tous les avis Google » et « Laisser un avis ».
 
 Fichier : **`mes-contenus/avis.js`**
 
@@ -284,3 +286,26 @@ Le site est déjà préparé : titres et descriptions des pages, fiche d'entrepr
 5. Garder le site **à jour** (planning, photos) : Google aime les sites vivants.
 
 Il faut parfois **plusieurs semaines** avant de voir les premiers effets.
+
+---
+
+## 10. Le curseur « Avant / Après » de l'accueil
+
+Fichier : **`mes-contenus/avant-apres.js`**
+
+Sur la page d'accueil, la partie « Voir la différence » permet de faire glisser un curseur pour comparer l'avant et l'après. Chaque bloc du fichier est une comparaison (lèvres, taches de rousseur…).
+
+Pour **ajouter** une comparaison :
+1. Préparez deux photos **de même taille**, de la même zone et cadrées de la même façon (une « avant », une « après »).
+2. Envoyez-les dans le dossier `photos`, en JPG.
+3. Dans `avant-apres.js`, copiez un bloc (de `{` jusqu'à `},`), collez-le en dessous, puis changez le titre, les noms des deux photos et le `ratio` (largeur / hauteur de vos photos, par exemple `"900 / 600"`).
+
+Pour **retirer** une comparaison, supprimez son bloc. Si la liste est vide, la partie disparaît. N'utilisez des photos de clients qu'avec leur accord écrit.
+
+## 11. Les questions et réponses déroulantes
+
+Les parties « Comment se passe votre projet ? » (accueil) et « Conseils » utilisent des questions qui se déroulent d'un clic. Elles sont écrites directement dans `index.html` et `conseils.html`, entre les balises `<details class="accordeon">` : modifiez seulement le texte visible, comme au point 5.
+
+## 12. Les effets d'animation
+
+Les textes et les photos apparaissent en fondu quand on fait défiler la page, et les boutons et les photos réagissent très doucement au passage de la souris. Ces effets sont désactivés automatiquement pour les personnes qui ont demandé de réduire les animations sur leur appareil.

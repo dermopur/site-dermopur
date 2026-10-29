@@ -20,7 +20,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script>(function(){var r=document.documentElement;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('anim');window.SELECTEURS_REVEAL=".accueil__texte > *, .en-tete-page .conteneur > *, .section .centre > *, .section.appel .conteneur > *, .qui-suis-je > *, .carte, .prestation, .categorie-titre, .engagements li, .avis, .moyen, .accordeon, .avant-apres__module, .tableau-defile, .grille-contact > *, .section .encadre--info:not(.creneau-choisi)";setTimeout(function(){if(!r.getAttribute('data-anim-pret'))r.classList.remove('anim')},3500)})();</script>
+  <style>html.anim :is(.accueil__texte > *, .en-tete-page .conteneur > *, .section .centre > *, .section.appel .conteneur > *, .qui-suis-je > *, .carte, .prestation, .categorie-titre, .engagements li, .avis, .moyen, .accordeon, .avant-apres__module, .tableau-defile, .grille-contact > *, .section .encadre--info:not(.creneau-choisi)){transition:opacity 1.1s cubic-bezier(.22,.61,.36,1),transform 1.1s cubic-bezier(.22,.61,.36,1),box-shadow .5s,border-color .5s}html.anim :is(.accueil__texte > *, .en-tete-page .conteneur > *, .section .centre > *, .section.appel .conteneur > *, .qui-suis-je > *, .carte, .prestation, .categorie-titre, .engagements li, .avis, .moyen, .accordeon, .avant-apres__module, .tableau-defile, .grille-contact > *, .section .encadre--info:not(.creneau-choisi)):not(.vu){opacity:0;transform:translateY(18px)}</style>
 </head>
 <body>
   <a class="lien-evitement" href="#contenu">Aller directement au contenu</a>
@@ -45,6 +47,7 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html" aria-current="page">Conseils</a></li>
+          <li><a href="avis.html">Avis</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -64,61 +67,37 @@
 
     <section class="section">
       <div class="conteneur etroit">
-        <p class="surtitre">1. La première consultation</p>
-        <h2>Prendre le temps de la réflexion</h2>
-        <span class="filet"></span>
-        <p>Un maquillage semi-permanent reste 1 à 3 ans sur votre visage : il demande un temps de réflexion. C'est pourquoi Indie ne réalise pas de séance décidée sur un coup de tête.</p>
-        <h3>Le questionnaire de santé</h3>
-        <p>Il permet de vérifier l'absence de contre-indications : <strong>grossesse, allergies, traitements médicaux en cours, problèmes de peau</strong>. On oublie parfois certaines choses à l'oral : ce document permet à Indie de savoir si la séance peut se faire en toute sécurité.</p>
-        <h3>Le consentement éclairé</h3>
-        <p>Il vous explique en toute transparence le déroulement de la séance, les consignes de cicatrisation à suivre à la maison et la durée de tenue du maquillage. Le signer, c'est l'assurance que nous sommes sur la même longueur d'onde.</p>
-      </div>
-    </section>
-
-    <section class="section section--ivoire">
-      <div class="conteneur etroit">
-        <p class="surtitre">2. Les 48 heures avant</p>
-        <h2>Préparer votre peau</h2>
-        <span class="filet"></span>
-        <ul class="liste-soin">
-          <li><strong>Soleil et UV :</strong> évitez l'exposition directe au soleil et les séances d'UV. Votre peau doit être bien reposée, pas échauffée.</li>
-          <li><strong>Crèmes et soins :</strong> pas de crème solaire, d'autobronzant, ni de soins forts (comme le rétinol ou les acides de fruits) sur la zone à maquiller.</li>
-          <li><strong>Épilation :</strong> pas d'épilation (pince, cire ou fil) juste avant, pour ne pas sensibiliser votre peau.</li>
-          <li><strong>Café et alcool :</strong> évitez l'alcool et les boissons très caféinées (café, thé, boissons énergisantes) 24 à 48h avant. Cela fluidifie le sang et peut altérer la prise du pigment.</li>
-          <li><strong>Médicaments :</strong> sauf obligation médicale, évitez de prendre de l'aspirine ou de l'ibuprofène.</li>
-          <li><strong>Le jour J :</strong> venez idéalement sans maquillage sur la zone concernée.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="conteneur etroit">
-        <p class="surtitre">3. La cicatrisation</p>
-        <h2>Les étapes clés de la guérison</h2>
-        <span class="filet"></span>
-        <ol class="chrono">
-          <li><strong>Jour 1 à jour 3 · Intensité et rougeurs</strong><p>La couleur paraît très foncée, presque trop saturée, et de légères rougeurs ou suintements peuvent apparaître.</p></li>
-          <li><strong>Jour 4 à jour 7 · Desquamation et croûtes</strong><p>Une fine pellicule ou de petites squames et croûtes se forment. Ne grattez jamais ces peaux, pour ne pas arracher le pigment.</p></li>
-          <li><strong>Jour 8 à jour 14 · Effet « trop clair »</strong><p>Les croûtes tombent et la couleur peut sembler trop claire ou effacée : c'est une phase normale de régénération.</p></li>
-          <li><strong>Jour 15 à jour 30 · Stabilisation</strong><p>Le pigment remonte doucement sous l'épiderme pour révéler la couleur définitive et naturelle. Au total, la couleur s'adoucit d'environ 30 à 40 % par rapport au jour de la séance.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section section--ivoire">
-      <div class="conteneur">
-        <div class="centre">
-          <p class="surtitre">4. Les soins à la maison</p>
-          <h2>Les consignes d'entretien indispensables</h2>
-          <span class="filet"></span>
+        <div class="accordeons">
+          <details class="accordeon" open><summary><span class="accordeon__titre">Pourquoi un questionnaire de santé et un consentement éclairé ?</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><p>Un maquillage semi-permanent reste 1 à 3 ans sur votre visage : il demande un temps de réflexion. C'est pourquoi Indie ne réalise pas de séance décidée sur un coup de tête.</p>
+          <h3>Le questionnaire de santé</h3>
+          <p>Il permet de vérifier l'absence de contre-indications : <strong>grossesse, allergies, traitements médicaux en cours, problèmes de peau</strong>. On oublie parfois certaines choses à l'oral : ce document permet à Indie de savoir si la séance peut se faire en toute sécurité.</p>
+          <h3>Le consentement éclairé</h3>
+          <p>Il vous explique en toute transparence le déroulement de la séance, les consignes de cicatrisation à suivre à la maison et la durée de tenue du maquillage. Le signer, c'est l'assurance que nous sommes sur la même longueur d'onde.</p></div></div></details>
+          <details class="accordeon"><summary><span class="accordeon__titre">Comment préparer votre peau avant la séance ?</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><p>Dans les 48 heures qui précèdent le rendez-vous :</p>
+          <ul class="liste-soin">
+            <li><strong>Soleil et UV :</strong> évitez l'exposition directe au soleil et les séances d'UV. Votre peau doit être bien reposée, pas échauffée.</li>
+            <li><strong>Crèmes et soins :</strong> pas de crème solaire, d'autobronzant, ni de soins forts (comme le rétinol ou les acides de fruits) sur la zone à maquiller.</li>
+            <li><strong>Épilation :</strong> pas d'épilation (pince, cire ou fil) juste avant, pour ne pas sensibiliser votre peau.</li>
+            <li><strong>Café et alcool :</strong> évitez l'alcool et les boissons très caféinées (café, thé, boissons énergisantes) 24 à 48h avant. Cela fluidifie le sang et peut altérer la prise du pigment.</li>
+            <li><strong>Médicaments :</strong> sauf obligation médicale, évitez de prendre de l'aspirine ou de l'ibuprofène.</li>
+            <li><strong>Le jour J :</strong> venez idéalement sans maquillage sur la zone concernée.</li>
+          </ul></div></div></details>
+          <details class="accordeon"><summary><span class="accordeon__titre">Comment se déroule la cicatrisation ?</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><ol class="chrono">
+            <li><strong>Jour 1 à jour 3 · Intensité et rougeurs</strong><p>La couleur paraît très foncée, presque trop saturée, et de légères rougeurs ou suintements peuvent apparaître.</p></li>
+            <li><strong>Jour 4 à jour 7 · Desquamation et croûtes</strong><p>Une fine pellicule ou de petites squames et croûtes se forment. Ne grattez jamais ces peaux, pour ne pas arracher le pigment.</p></li>
+            <li><strong>Jour 8 à jour 14 · Effet « trop clair »</strong><p>Les croûtes tombent et la couleur peut sembler trop claire ou effacée : c'est une phase normale de régénération.</p></li>
+            <li><strong>Jour 15 à jour 30 · Stabilisation</strong><p>Le pigment remonte doucement sous l'épiderme pour révéler la couleur définitive et naturelle. Au total, la couleur s'adoucit d'environ 30 à 40 % par rapport au jour de la séance.</p></li>
+          </ol></div></div></details>
+          <details class="accordeon"><summary><span class="accordeon__titre">Quels soins suivre à la maison ?</span><span class="accordeon__signe" aria-hidden="true"></span></summary><div class="accordeon__contenu"><div class="accordeon__corps"><h3>Garder au sec</h3>
+          <p>Évitez de mouiller directement la zone pigmentée sous la douche pendant 48h. Pas de piscine, de sauna ni de hammam pendant les 4 premières semaines.</p>
+          <h3>Nettoyer en douceur</h3>
+          <p>Nettoyez la zone avec un savon très doux ou de l'eau tiède (du sérum physiologique pour le ras de cils), puis tamponnez délicatement avec un mouchoir propre, sans jamais frotter.</p>
+          <h3>Hydrater</h3>
+          <p>Appliquez une infime quantité de crème cicatrisante sur la peau, matin et soir. Les crèmes conseillées par Indie : La Roche-Posay Cicaplast B5, Bioderma Cicabio ou Bepanthen.</p>
+          <h3>Protéger</h3>
+          <p>Évitez l'exposition au soleil sans crème solaire indice 50. Pas de maquillage sur la zone pendant les 4 premières semaines. Évitez le sport intensif pendant les 2 premières semaines, pour éviter la transpiration excessive et les infections.</p></div></div></details>
         </div>
-        <div class="grille-conseils">
-          <div class="encadre"><h3>Garder au sec</h3><p>Évitez de mouiller directement la zone pigmentée sous la douche pendant 48h. Pas de piscine, de sauna ni de hammam pendant les 4 premières semaines.</p></div>
-          <div class="encadre"><h3>Nettoyer en douceur</h3><p>Nettoyez la zone avec un savon très doux ou de l'eau tiède (du sérum physiologique pour le ras de cils), puis tamponnez délicatement avec un mouchoir propre, sans jamais frotter.</p></div>
-          <div class="encadre"><h3>Hydrater</h3><p>Appliquez une infime quantité de crème cicatrisante sur la peau, matin et soir. Les crèmes conseillées par Indie : La Roche-Posay Cicaplast B5, Bioderma Cicabio ou Bepanthen.</p></div>
-          <div class="encadre"><h3>Protéger</h3><p>Évitez l'exposition au soleil sans crème solaire indice 50. Pas de maquillage sur la zone pendant les 4 premières semaines. Évitez le sport intensif pendant les 2 premières semaines, pour éviter la transpiration excessive et les infections.</p></div>
-        </div>
-        <div class="encadre encadre--info centre" style="margin-top:3rem">
+        <div class="encadre encadre--info centre" style="margin-top:4rem">
           <h2>Une question sur votre séance ?</h2>
           <p>Écrivez ou appelez Indie : il vous répondra avec plaisir.</p>
           <div class="boutons boutons--centre">
@@ -157,6 +136,7 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
+          <li><a href="avis.html">Avis</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -176,6 +156,6 @@
     <a class="rdv" href="contact.html#rendez-vous"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#calendrier"/></svg>Réserver</a>
   </nav>
 
-  <script src="site.js?v=10"></script>
+  <script src="site.js?v=12"></script>
 </body>
 </html>

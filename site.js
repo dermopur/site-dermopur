@@ -510,6 +510,88 @@
     if (suite) suite.value = new URL("merci.html", location.href).href;
   }
 
+  /* ---------- Avant / après : curseur à faire glisser (mes-contenus/avant-apres.js) ---------- */
+  var zoneAA = $("#avant-apres-liste");
+  var listeAA = window.AVANT_APRES || [];
+  if (zoneAA && listeAA.length) {
+    $("#avant-apres").hidden = false;
+    var fleches = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    zoneAA.innerHTML = listeAA.map(function (a) {
+      return '<figure class="avant-apres__module"><div class="aa-cadre" style="--ratio:' + echapper(a.ratio || "4 / 3") + ';--pos:50%">' +
+        '<img class="aa-apres" src="' + echapper(a.apres) + '" alt="' + echapper((a.alt || a.titre) + " : après") + '" loading="lazy">' +
+        '<img class="aa-avant" src="' + echapper(a.avant) + '" alt="' + echapper((a.alt || a.titre) + " : avant") + '" loading="lazy">' +
+        '<span class="aa-etiquette aa-etiquette--avant">Avant</span><span class="aa-etiquette aa-etiquette--apres">Après</span>' +
+        '<span class="aa-poignee"><span class="aa-bouton">' + fleches + '</span></span>' +
+        '<input class="aa-curseur" type="range" min="0" max="100" value="50" aria-label="Comparer l\'avant et l\'après : ' + echapper(a.titre) + '">' +
+        '</div><figcaption>' + echapper(a.titre) + '</figcaption></figure>';
+    }).join("");
+    $$(".aa-cadre", zoneAA).forEach(function (cadre) {
+      var curseur = $(".aa-curseur", cadre), actif = false;
+      function placer(pct) {
+        pct = Math.max(0, Math.min(100, pct));
+        cadre.style.setProperty("--pos", pct + "%");
+        curseur.value = Math.round(pct);
+      }
+      function depuis(e) {
+        var r = cadre.getBoundingClientRect();
+        placer((e.clientX - r.left) / r.width * 100);
+      }
+      cadre.addEventListener("pointerdown", function (e) {
+        actif = true;
+        try { cadre.setPointerCapture(e.pointerId); } catch (err) { /* rien */ }
+        depuis(e);
+      });
+      cadre.addEventListener("pointermove", function (e) { if (actif) depuis(e); });
+      ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (nom) { cadre.addEventListener(nom, function () { actif = false; }); });
+      curseur.addEventListener("input", function () { placer(+curseur.value); });
+    });
+  }
+
+  /* ---------- Accordéons : ouverture et fermeture en douceur ---------- */
+  var sansAnimation = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  $$("details.accordeon").forEach(function (d) {
+    var titre = $("summary", d), contenu = $(".accordeon__contenu", d), anim = null;
+    if (!titre || !contenu || sansAnimation || !contenu.animate) return;
+    titre.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (anim) anim.cancel();
+      var h = contenu.offsetHeight;
+      if (!d.open) {
+        d.open = true;
+        h = contenu.offsetHeight;
+        anim = contenu.animate([{ height: "0px", opacity: 0 }, { height: h + "px", opacity: 1 }], { duration: 550, easing: "cubic-bezier(.22,.61,.36,1)" });
+        anim.onfinish = function () { anim = null; };
+      } else {
+        anim = contenu.animate([{ height: h + "px", opacity: 1 }, { height: "0px", opacity: 0 }], { duration: 400, easing: "cubic-bezier(.22,.61,.36,1)" });
+        anim.onfinish = function () { d.open = false; anim = null; };
+      }
+    });
+  });
+
+  /* ---------- Apparition en fondu au défilement ---------- */
+  (function () {
+    var racine = document.documentElement;
+    if (!racine.classList.contains("anim")) return;
+    if (!("IntersectionObserver" in window) || !window.SELECTEURS_REVEAL) { racine.classList.remove("anim"); return; }
+    var cibles = $$(window.SELECTEURS_REVEAL);
+    var rang = new Map();
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, parent = el.parentNode;
+        var n = rang.get(parent) || 0;
+        rang.set(parent, n + 1);
+        el.style.transitionDelay = Math.min(n, 5) * 110 + "ms";
+        el.classList.add("vu");
+        observateur.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ""; }, 1800);
+        setTimeout(function () { rang.set(parent, Math.max(0, (rang.get(parent) || 1) - 1)); }, 900);
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+    cibles.forEach(function (el) { observateur.observe(el); });
+    racine.setAttribute("data-anim-pret", "1");
+  })();
+
   $$("[data-adresse]").forEach(function (el) { el.textContent = ADRESSE; });
   $$("[data-annee]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
   surveillerPhotos(document);
