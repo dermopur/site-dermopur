@@ -3,17 +3,18 @@
    Les couleurs du site sont réglées juste en dessous.
    ========================================================= */
 :root {
-  /* Palette inspirée du velours bordeaux, du thé matcha et de la cuillère dorée */
+  /* Palette : velours bordeaux, vert sauge et doré */
   --bordeaux: #4a0d1c;       /* couleur principale : logo, titres, boutons */
   --bordeaux-fonce: #2a0610; /* bandeau du haut, pied de page, survols */
-  --bordeaux-doux: #56632a;  /* vert matcha foncé : petits titres, slogan (lisible sur fond clair) */
-  --matcha: #a8b66c;         /* vert matcha : touches de couleur, cadres des photos */
-  --matcha-pale: #e7ecd5;    /* vert très pâle : fonds de bandes */
+  --bordeaux-doux: #4b5638;  /* vert sauge profond : petits titres, slogan (lisible sur fond clair) */
+  --matcha: #7c8964;         /* vert sauge : filets et touches de couleur */
+  --matcha-pale: #eceee5;    /* vert sauge très pâle : fonds de bandes */
+  --sauge-claire: #c5ccb3;   /* vert sauge clair : petits textes sur fond bordeaux */
   --or: #c9a95c;             /* doré de la cuillère : détails sur fond bordeaux */
   --or-texte: #85661f;       /* doré lisible sur fond clair (étoiles) */
   --creme: #f4efe6;          /* fond général */
   --ivoire: #fbf8f2;         /* fond des cartes */
-  --poudre: #e7ecd5;         /* fond des bandes (vert matcha très pâle) */
+  --poudre: #eceee5;         /* fond des bandes (vert sauge très pâle) */
   --filet: #ddd5c4;          /* lignes fines */
   --encre: #2a1418;          /* texte principal */
   --encre-douce: #574749;    /* texte secondaire */
@@ -363,25 +364,25 @@ body { padding-bottom: 76px; }
 /* =========================================================
    Palette bordeaux · matcha · or : mise en valeur des visages
    ========================================================= */
-.bouton--plein:hover { background: var(--matcha); border-color: var(--matcha); color: var(--bordeaux-fonce); }
+.bouton--plein:hover { background: var(--bordeaux-fonce); border-color: var(--bordeaux-fonce); color: #fff; }
 .bouton:hover { background: var(--bordeaux); color: #fff; }
 .menu li a:hover { color: var(--bordeaux-doux); }
 .menu li a[aria-current="page"] { border-bottom-color: var(--matcha); }
-.filet { background: var(--matcha); height: 2px; }
-.barre-haut a:hover { color: var(--matcha); text-decoration: none; }
+.filet { background: var(--matcha); height: 1px; }
+.barre-haut a:hover { color: var(--sauge-claire); text-decoration: none; }
 
-/* Grande photo de l'accueil et portrait : bloc matcha décalé derrière */
-.accueil__photo, .photo-cadre { outline: 0; margin: 0 22px 22px 0; box-shadow: 22px 22px 0 var(--matcha); }
-.photo-cadre { margin: 0 auto 22px; width: calc(100% - 22px); }
+/* Grande photo de l'accueil et portrait : sans cadre */
+.accueil__photo, .photo-cadre { outline: 0; box-shadow: none; margin: 0; }
+.photo-cadre { margin: 0 auto; width: 100%; }
 
 /* Bande bordeaux : les visages ressortent sur le velours */
 .section--vin { background: var(--bordeaux); color: #f4efe6; }
 .section--vin h2 { color: #fff; }
-.section--vin .surtitre { color: var(--matcha); }
+.section--vin .surtitre { color: var(--sauge-claire); }
 .section--vin .intro { color: #eadfe0; }
 .section--vin .filet { background: var(--or); }
-.section--vin .bouton { border-color: var(--matcha); color: #fff; }
-.section--vin .bouton:hover { background: var(--matcha); color: var(--bordeaux-fonce); }
+.section--vin .bouton { border-color: var(--sauge-claire); color: #fff; }
+.section--vin .bouton:hover { background: #fff; border-color: #fff; color: var(--bordeaux); }
 .section--vin .carte { border: 0; }
 .carte__photo { aspect-ratio: 4 / 5; }
 .carte__photo img { object-position: center 40%; }
@@ -390,41 +391,42 @@ body { padding-bottom: 76px; }
 
 /* Fiches des soins : photo verticale encadrée de matcha */
 .prestation__photo { aspect-ratio: 4 / 5; }
-.prestation { border-top: 3px solid var(--matcha); }
+.prestation { border-top: 2px solid var(--matcha); }
 @media (min-width: 900px) { .prestation__photo { aspect-ratio: auto; min-height: 420px; } }
-.categorie-titre { border-bottom: 2px solid var(--matcha); }
-.bon-a-savoir { border-left-color: var(--matcha); background: var(--matcha-pale); }
+.categorie-titre { border-bottom: 1px solid var(--matcha); }
+.bon-a-savoir { border-left: 2px solid var(--matcha); background: var(--matcha-pale); }
 .infos .ic, .reperes .ic { color: var(--bordeaux-doux); }
 .tarifs__groupe th { background: var(--matcha-pale); }
 
 /* Étapes, engagements, chronologie */
 .etapes li::before { color: var(--bordeaux-doux); }
-.etapes li, .engagements li { border-top: 3px solid var(--matcha); }
+.etapes li, .engagements li { border-top: 2px solid var(--matcha); }
 .chrono { border-left-color: var(--matcha); }
 .chrono li::before { border-color: var(--bordeaux); background: var(--matcha); }
 
 /* Réservation */
 .duree:hover { border-color: var(--matcha); }
-.duree[aria-pressed="true"] .duree__prix { color: var(--matcha); }
+.duree[aria-pressed="true"] .duree__prix { color: var(--sauge-claire); }
 .etape-numero { background: var(--bordeaux); color: #fff; border-color: var(--bordeaux); }
 .heure:hover, .heure:focus-visible { background: var(--bordeaux); color: #fff; }
 .heure--choisie, .heure--choisie:hover { box-shadow: 0 0 0 3px var(--creme), 0 0 0 5px var(--matcha); }
 .semaine__badge { border-color: var(--bordeaux-doux); color: var(--bordeaux-doux); }
 
 /* Avis */
-.avis { border-top: 3px solid var(--matcha); }
+.avis { border-top: 2px solid var(--matcha); }
 .avis__etoiles { color: var(--or-texte); }
 
 /* Bandeau d'appel et pied de page */
-.appel .surtitre { color: var(--matcha); }
+.appel .surtitre { color: var(--sauge-claire); }
 .appel .filet { background: var(--or); }
-.appel .bouton--clair:hover { background: var(--matcha); border-color: var(--matcha); color: var(--bordeaux-fonce); }
-.pied h2 { color: var(--matcha); }
-.pied .logo__slogan { color: var(--matcha); }
+.appel .bouton--clair:hover { background: #fff; border-color: #fff; color: var(--bordeaux); }
+.pied h2 { color: var(--sauge-claire); }
+.pied .logo__slogan { color: var(--sauge-claire); }
 .pied .logo__sous { color: #eadfe0; }
-.encadre--info { border-color: var(--matcha); border-top: 3px solid var(--matcha); }
+.encadre--info { border-color: var(--filet); border-top: 2px solid var(--matcha); }
 .encadre--attention { background: #fbf3f0; border-color: var(--bordeaux); }
 .moyen:hover { border-color: var(--matcha); }
-.moyen__icone { border-color: var(--matcha); color: var(--bordeaux); background: var(--matcha-pale); }
-.actions-mobiles a.rdv { background: var(--matcha); color: var(--bordeaux-fonce); }
+.moyen__icone { border-color: var(--matcha); color: var(--bordeaux); background: transparent; }
+.actions-mobiles a.rdv { background: var(--bordeaux-fonce); color: #fff; }
 @media (min-width: 900px) { .prestation--sans-photo { grid-template-columns: 1fr; } }
+.appel .filet { margin-inline: auto; }

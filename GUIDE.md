@@ -169,8 +169,8 @@ Toutes les photos vont dans le dossier **`photos`**. Toutes les photos sont en p
 
 | Nom du fichier | Où elle apparaît |
 |---|---|
-| `accueil.jpg` | Grande photo en haut de l'accueil : le tracé poil à poil (format vertical idéal) |
-| `portrait.jpg` | Votre photo, partie « Moi, c'est Indie » |
+| `accueil.jpg` | Grande photo en haut de l'accueil : Indie en séance (format vertical idéal) |
+| `portrait.jpg` | Photo de la partie « Moi, c'est Indie » (pour l'instant, le tracé poil à poil) |
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
 | `ras-de-cils.jpg` | Ras de cils supérieur |
@@ -208,7 +208,7 @@ Le nom doit être **exactement** celui du tableau : en minuscules, sans accent, 
 
 Le logo « DERMOPUR » du site est écrit en texte, avec la police Playfair Display, comme sur vos visuels : il reste net sur tous les écrans. L'icône de l'onglet (`images/favicon.png`, `images/icone.png`) et l'image d'aperçu des partages (`images/partage.jpg`) sont dans le dossier `images`.
 
-Les couleurs sont réglées tout en haut du fichier `style.css` : bordeaux velours (`--bordeaux: #4a0d1c;`), vert matcha (`--matcha: #a8b66c;`), doré (`--or: #c9a95c;`) et crème.
+Les couleurs sont réglées tout en haut du fichier `style.css` : bordeaux velours (`--bordeaux: #4a0d1c;`), vert sauge (`--matcha: #7c8964;` et `--bordeaux-doux: #4b5638;` pour les petits titres), doré (`--or: #c9a95c;`) et crème.
 
 ## 5. Les autres textes
 
