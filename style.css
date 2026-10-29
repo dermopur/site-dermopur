@@ -10,7 +10,8 @@
   --nude: #b9927f;           /* filets fins et touches de couleur */
   --nude-clair: #dcc3b6;     /* petits textes sur fond cacao */
   --pierre: #e8dfd3;         /* bandes de fond (pierre claire) */
-  --or: #c2a17e;             /* doré sable : détails sur fond foncé */
+  --or: #c9a96e;             /* doré : détails sur fond foncé (comme la carte de visite) */
+  --or-profond: #b08d57;     /* doré plus profond : détails sur fond clair */
   --or-texte: #7a6145;       /* doré lisible sur fond clair (étoiles) */
   --creme: #f2ece4;          /* fond général (sable) */
   --ivoire: #f8f4ee;         /* fond des cartes (lin) */
@@ -662,3 +663,40 @@ a { transition: color .6s ease; }
   .prestation--curseur .prestation__photo.aa-cadre { aspect-ratio: auto; height: clamp(340px, 46vw, 560px); }
   .prestation--curseur .prestation__texte { padding: 3rem 3.6rem 3.4rem; }
 }
+
+/* =========================================================
+   TOUCHES DORÉES (reprises de la carte de visite)
+   Filet à losange, double cadre fin, monogramme, liserés
+   ========================================================= */
+
+/* ---- Filet ornemental : trait, losange, trait ---- */
+.filet, .section--vin .filet, .appel .filet {
+  --fo: var(--or-profond);
+  position: relative; display: block; width: 116px; height: 9px; border: 0;
+  background:
+    linear-gradient(var(--fo), var(--fo)) left center / 48px 1px no-repeat,
+    linear-gradient(var(--fo), var(--fo)) right center / 48px 1px no-repeat;
+}
+.section--vin .filet, .appel .filet { --fo: var(--or); }
+.filet::after { content: ""; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; background: var(--fo); transform: translate(-50%, -50%) rotate(45deg); }
+.centre .filet, .appel .filet { margin-inline: auto; }
+
+/* ---- Double cadre doré sur les bandes foncées ---- */
+.section--vin, .appel { position: relative; }
+.section--vin::before, .section--vin::after, .appel::before, .appel::after { content: ""; position: absolute; pointer-events: none; }
+.section--vin::before, .appel::before { inset: clamp(10px, 1.5vw, 22px); border: 1px solid var(--or); opacity: .8; }
+.section--vin::after, .appel::after { inset: calc(clamp(10px, 1.5vw, 22px) + 5px); border: 1px solid var(--or); opacity: .4; }
+
+/* ---- Liserés dorés ---- */
+.barre-haut { border-bottom: 1px solid var(--or); }
+.pied { border-top: 1px solid var(--or); }
+.menu li a[aria-current="page"] { border-bottom-color: var(--or-profond); }
+.etape-numero { border-color: var(--or-profond); }
+.portrait-petit { border-color: var(--or-profond); }
+.etapes li, .engagements li, .avis, .prestation, .encadre--info { border-top-color: var(--or-profond); }
+.bon-a-savoir { border-left-color: var(--or-profond); }
+.categorie-titre { border-bottom-color: var(--or-profond); }
+
+/* ---- Monogramme « D » doré dans un cercle (pied de page) ---- */
+.monogramme-ligne { display: flex; justify-content: center; margin: 0 0 2rem; }
+.monogramme { display: grid; place-items: center; width: 64px; height: 64px; border: 1px solid var(--or); border-radius: 50%; font-family: var(--titres); font-weight: 400; font-size: 2.1rem; line-height: 1; color: var(--or); padding-bottom: .12em; }

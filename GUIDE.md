@@ -207,7 +207,7 @@ Le nom doit être **exactement** celui du tableau : en minuscules, sans accent, 
 
 Le logo « DERMOPUR » du site est écrit en texte, avec la police Cormorant Garamond : il reste net sur tous les écrans. L'icône de l'onglet (`images/favicon.png`, `images/icone.png`) et l'image d'aperçu des partages (`images/partage.jpg`) sont dans le dossier `images`.
 
-Les couleurs et les polices sont réglées tout en haut du fichier `style.css` : palette « grain de sable » avec sable (`--creme: #f2ece4;`), lin (`--ivoire: #f8f4ee;`), pierre (`--pierre: #e8dfd3;`), taupe (`--taupe: #6e5e50;`), nude (`--nude: #b9927f;`) et cacao (`--cacao: #4a3830;`). Titres en Cormorant Garamond, texte en Montserrat. Le léger grain du fond est réglé par la ligne `--grain`.
+Les couleurs et les polices sont réglées tout en haut du fichier `style.css` : palette « grain de sable » avec sable (`--creme: #f2ece4;`), lin (`--ivoire: #f8f4ee;`), pierre (`--pierre: #e8dfd3;`), taupe (`--taupe: #6e5e50;`), nude (`--nude: #b9927f;`) et cacao (`--cacao: #4a3830;`). Titres en Cormorant Garamond, texte en Montserrat. Le léger grain du fond est réglé par la ligne `--grain`. Le doré (`--or: #c9a96e;` sur fond foncé, `--or-profond: #b08d57;` sur fond clair) est repris de la carte de visite : filets à losange, double cadre, monogramme du pied de page.
 
 ## 5. Les autres textes
 
