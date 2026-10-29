@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <a class="lien-evitement" href="#contenu">Aller directement au contenu</a>
@@ -43,7 +43,7 @@
       <nav id="menu" class="menu" aria-label="Menu principal">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
           <li><a href="disponibilites.html" aria-current="page">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -58,29 +58,30 @@
       <div class="conteneur">
         <p class="surtitre">Disponibilités</p>
         <h1>Les horaires libres</h1>
-        <p class="intro">Choisissez votre prestation, puis l'heure qui vous convient. Vous laissez ensuite vos coordonnées, et je vous confirme votre rendez-vous.</p>
+        <p class="intro">Choisissez votre soin, puis l'heure qui vous convient. Vous laissez ensuite vos coordonnées, et Indie vous confirme votre rendez-vous.</p>
       </div>
     </section>
     <section class="section" style="padding-top:2.5rem">
       <div class="conteneur">
-        <h2 class="etape-titre"><span class="etape-numero">1</span> Choisissez votre prestation</h2>
-        <div id="choix-prestation" role="group" aria-label="Prestation souhaitée"></div>
-        <noscript><p>Pour voir le planning, merci d'activer JavaScript ou de m'appeler au 07 66 23 04 30.</p></noscript>
+        <h2 class="etape-titre"><span class="etape-numero">1</span> Choisissez votre soin</h2>
+        <div id="choix-prestation" role="group" aria-label="Soin souhaité"></div>
+        <noscript><p>Pour voir le planning, merci d'activer JavaScript ou d'appeler Indie au 07 66 23 04 30.</p></noscript>
 
         <div id="etape-creneau" class="etape-creneau" hidden>
           <h2 class="etape-titre"><span class="etape-numero">2</span> Choisissez votre heure de début</h2>
-          <p class="etape-aide">Prestation choisie : <strong id="prestation-rappel"></strong>. Les heures affichées sont les heures de <strong>début</strong> encore possibles. Touchez celle qui vous convient.</p>
+          <p class="etape-aide">Soin choisi : <strong id="prestation-rappel"></strong>. Les heures affichées sont les heures de <strong>début</strong> encore possibles. Touchez celle qui vous convient.</p>
+          <p class="etape-aide" id="note-duree" hidden>La durée d'une retouche dépend de la zone : le planning prévoit la durée la plus longue, et Indie l'ajuste avec vous.</p>
           <div class="encadre encadre--attention avertissement" role="note">
             <svg class="ic" aria-hidden="true"><use href="images/icones.svg#horloge"/></svg>
-            <p style="margin:0"><strong>Votre réservation n'est pas automatique.</strong> Quand vous choisissez un horaire, vous m'envoyez une <strong>demande</strong>. Votre rendez-vous est validé <strong>uniquement quand je vous l'ai confirmé</strong> (par téléphone, SMS ou WhatsApp). Je réponds du mardi au samedi, de 10h à 19h.</p>
+            <p style="margin:0"><strong>Votre réservation n'est pas automatique.</strong> Quand vous choisissez un horaire, vous envoyez une <strong>demande</strong>. Votre rendez-vous est validé <strong>uniquement après la confirmation d'Indie</strong> (par téléphone, SMS ou WhatsApp). Il répond du mardi au samedi, de 10h à 19h.</p>
           </div>
-          <p class="etape-aide"><strong>Pour un rendez-vous dans moins de 24h</strong>, appelez-moi ou écrivez-moi sur WhatsApp : c'est le plus rapide.</p>
+          <p class="etape-aide"><strong>Pour un rendez-vous dans moins de 24h</strong>, appelez Indie ou écrivez-lui sur WhatsApp : c'est le plus rapide.</p>
           <div id="planning" aria-live="polite"></div>
         </div>
 
         <div class="encadre encadre--info" style="margin-top:3rem">
           <h2>Aucun horaire ne vous convient ?</h2>
-          <p>Appelez-moi ou écrivez-moi : il est parfois possible de trouver un autre moment.</p>
+          <p>Appelez ou écrivez à Indie : il est parfois possible de trouver un autre moment.</p>
           <div class="boutons">
             <a class="bouton" href="tel:+33766230430"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#tel"/></svg> 07 66 23 04 30</a>
             <a class="bouton" href="https://wa.me/33766230430?text=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous." target="_blank" rel="noopener" data-whatsapp><svg class="ic" aria-hidden="true"><use href="images/icones.svg#whatsapp"/></svg> WhatsApp</a>
@@ -95,10 +96,10 @@
     <div class="conteneur pied__grille">
       <div>
         <a href="index.html" class="logo"><span class="logo__nom">DERMOPUR</span><span class="logo__slogan">« L'élégance du détail »</span><span class="logo__sous">Maquillage semi-permanent</span></a>
-        <p>Maquillage semi-permanent sur rendez-vous à Saint-Jean-le-Blanc, près d'Orléans, par Indie Coudret.</p>
+        <p>Maquillage semi-permanent à Saint-Jean-le-Blanc, près d'Orléans, entre les mains d'Indie Coudret.</p>
       </div>
       <div>
-        <h2>Me contacter</h2>
+        <h2>Contact</h2>
         <ul>
           <li><a href="tel:+33766230430"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#tel"/></svg> 07 66 23 04 30</a></li>
           <li><a href="mailto:coudret.indie@gmail.com"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#mail"/></svg> coudret.indie@gmail.com</a></li>
@@ -109,13 +110,13 @@
       <div>
         <h2>Le cabinet</h2>
         <p>Dermopur<br>15 rue du Général de Gaulle<br>45650 Saint-Jean-le-Blanc</p>
-        <p>Du mardi au samedi, de 10h à 19h.<br>Uniquement sur rendez-vous.</p>
+        <p>Du mardi au samedi, de 10h à 19h,<br>sur rendez-vous uniquement.</p>
       </div>
       <div>
         <h2>Pages</h2>
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -138,6 +139,6 @@
 
   <script src="mes-contenus/prestations-et-tarifs.js"></script>
   <script src="mes-contenus/planning.js"></script>
-  <script src="site.js?v=1"></script>
+  <script src="site.js?v=2"></script>
 </body>
 </html>

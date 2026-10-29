@@ -1,8 +1,8 @@
 /* =====================================================================
-   MES PRESTATIONS ET MES TARIFS
+   MES SOINS ET MES TARIFS
    ---------------------------------------------------------------------
    C'est ici que vous changez les prix, les durées et les textes des
-   prestations. Ils se mettent à jour tout seuls sur toutes les pages.
+   soins. Ils se mettent à jour tout seuls sur toutes les pages.
 
    Règles simples :
    - Ne modifiez que le texte ENTRE les guillemets "..." et les nombres.
@@ -11,16 +11,21 @@
    ===================================================================== */
 
 
-/* ---------- LES PRESTATIONS ----------
-   Pour chaque prestation :
+/* ---------- LES SOINS ----------
+   Pour chaque soin :
    - nom          : le nom affiché
    - categorie    : le groupe dans lequel elle apparaît
                     ("Sourcils", "Yeux", "Lèvres", "Visage" ou "Retouches")
-   - minutes      : la durée du rendez-vous (sert au planning en ligne)
+   - minutes      : la durée du rendez-vous (sert au planning en ligne :
+                    pour une durée variable, mettez la durée la plus longue)
+   - minutesMin   : (facultatif) la durée la plus courte, si elle varie.
+                    Le site affiche alors « 30 min à 1h30 »
    - prix         : le prix en euros
+   - prixMax      : (facultatif) le prix le plus haut, si le prix varie.
+                    Le site affiche alors « Entre 50 € et 100 € »
    - photo        : le nom du fichier photo, à déposer dans le dossier « photos »
-                    (laissez "" pour une prestation sans photo)
-   - description  : quelques phrases pour expliquer la prestation
+                    (laissez "" pour un soin sans photo)
+   - description  : quelques phrases pour expliquer le soin
                     (laissez "" tant que le texte n'est pas prêt)
    - bonASavoir   : une précaution ou une info utile (laissez "" si rien)
 */
@@ -64,7 +69,7 @@ var PRESTATIONS = [
   {
     nom: "Grain de beauté",
     categorie: "Visage",
-    minutes: 120,
+    minutes: 45,
     prix: 50,
     photo: "grain-de-beaute.jpg",
     description: "Un grain de beauté dessiné sur mesure, de la touche la plus discrète à un effet plus affirmé. Il est toujours préférable de commencer en douceur lors de la première séance : on peut l'intensifier ensuite, lors de la retouche.",
@@ -82,19 +87,23 @@ var PRESTATIONS = [
   {
     nom: "Retouches fixatrices mois suivant",
     categorie: "Retouches",
-    minutes: 120,
+    minutes: 90,
+    minutesMin: 30,
     prix: 50,
+    prixMax: 100,
     photo: "",
-    description: "La séance du mois suivant, pour fixer le tout et perfectionner les moindres détails une fois la peau cicatrisée.",
+    description: "La séance du mois suivant, pour fixer le tout et perfectionner les moindres détails une fois la peau cicatrisée. La durée et le prix dépendent de la zone.",
     bonASavoir: ""
   },
   {
     nom: "Retouche annuelle 12/18 mois",
     categorie: "Retouches",
     minutes: 120,
+    minutesMin: 60,
     prix: 100,
+    prixMax: 150,
     photo: "",
-    description: "Une retouche 12 à 18 mois après votre séance.",
+    description: "Une retouche 12 à 18 mois après votre séance. La durée et le prix dépendent de la zone.",
     bonASavoir: ""
   }
 ];

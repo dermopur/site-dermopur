@@ -87,10 +87,10 @@ Pas de panique : GitHub garde **toutes** les anciennes versions de chaque fichie
 
 Fichier : **`mes-contenus/planning.js`**
 
-Sur les pages « Disponibilités » et « Contact », le client choisit d'abord **sa prestation**, puis le site lui montre **toutes les heures de début possibles**, de 15 minutes en 15 minutes, sur la semaine en cours et la suivante. Le site calcule tout seul :
-- que la prestation se termine avant la fin de vos horaires (2h, ou 2h45 pour les lèvres) ;
+Sur les pages « Disponibilités » et « Contact », le client choisit d'abord **son soin**, puis le site lui montre **toutes les heures de début possibles**, de 15 minutes en 15 minutes, sur la semaine en cours et la suivante. Le site calcule tout seul :
+- que le soin se termine avant la fin de vos horaires (de 45 min à 2h45 selon le soin) ;
 - qu'elle ne chevauche pas un rendez-vous déjà réservé ;
-- qu'il reste **30 minutes de pause entre deux prestations** ;
+- qu'il reste **30 minutes de pause entre deux soins** ;
 - qu'on ne demande pas un horaire à moins de 24h (le client est alors invité à vous appeler).
 
 Quand un client touche une heure, il arrive sur le formulaire (ou peut passer par WhatsApp ou le téléphone). **La réservation n'est pas automatique : le rendez-vous n'est validé que quand vous l'avez confirmé.** Le site ne bloque pas le créneau tout seul : c'est vous qui l'ajoutez dans la liste des rendez-vous réservés (voir plus bas). Le site n'est relié à aucun agenda.
@@ -135,27 +135,29 @@ Le site bloque ce créneau et les 30 minutes de pause autour. Vous pouvez suppri
 
 ⚠️ Chaque ligne est entre guillemets `" "` et se termine par une virgule.
 
-**Réglages** (en bas du fichier) : la pause entre deux prestations (30 min), la précision des créneaux (15 min), le délai minimum avant un rendez-vous (24 h) et le nombre de semaines affichées (2).
+**Réglages** (en bas du fichier) : la pause entre deux soins (30 min), la précision des créneaux (15 min), le délai minimum avant un rendez-vous (24 h) et le nombre de semaines affichées (2).
 
 ---
 
-## 2. Changer les prix, les durées et les descriptions
+## 2. Changer les prix, les durées et les descriptions des soins
 
 Fichier : **`mes-contenus/prestations-et-tarifs.js`**
 
-Chaque prestation a :
+Chaque soin a :
 - `nom` : le nom affiché ;
 - `categorie` : le groupe (Sourcils, Yeux, Lèvres, Visage, Retouches) ;
-- `minutes` : la durée du rendez-vous, utilisée par le planning (120 = 2h, 165 = 2h45) ;
+- `minutes` : la durée du rendez-vous, utilisée par le planning (45 = 45 min, 120 = 2h, 165 = 2h45). Pour une durée qui varie, mettez la durée la plus longue ;
+- `minutesMin` (facultatif) : la durée la plus courte. Le site affiche alors par exemple « 30 min à 1h30 » ;
 - `prix` : le prix en euros, sans le signe € ;
+- `prixMax` (facultatif) : le prix le plus haut. Le site affiche alors « Entre 50 € et 100 € » ;
 - `photo` : le nom de la photo dans le dossier `photos` ;
-- `description` et `bonASavoir` : les textes affichés sur la page « Prestations et tarifs ».
+- `description` et `bonASavoir` : les textes affichés sur la page « Nos soins ».
 
-Les nouveaux prix apparaissent partout : accueil, prestations, tableau des tarifs, planning et formulaire.
+Les nouveaux prix apparaissent partout : accueil, page « Nos soins », tableau des tarifs, planning et formulaire.
 
 - Si vous voulez des guillemets à l'intérieur d'un texte, utilisez « » (et pas " ").
-- **Ajouter une prestation** : copiez le bloc d'une prestation, de `{` jusqu'à `},`, collez-le juste en dessous et changez les textes.
-- **Retirer une prestation** : supprimez son bloc entier.
+- **Ajouter un soin** : copiez le bloc d'un soin, de `{` jusqu'à `},`, collez-le juste en dessous et changez les textes.
+- **Retirer un soin** : supprimez son bloc entier.
 
 ⚠️ Les prix sont aussi cités dans la description Google de la page `prestations.html` (ligne `<meta name="description" …>` en haut). Pensez à la mettre à jour si vous changez un prix.
 
@@ -163,11 +165,11 @@ Les nouveaux prix apparaissent partout : accueil, prestations, tableau des tarif
 
 ## 3. Mettre vos photos
 
-Toutes les photos vont dans le dossier **`photos`**. Pour l'instant, chaque photo est une image neutre « Photo à venir ». Remplacez-la par votre vraie photo **avec exactement le même nom**.
+Toutes les photos vont dans le dossier **`photos`**. Les photos des soins sont en place ; `portrait.jpg` est encore une image neutre « Photo à venir ». Pour changer une photo, envoyez la nouvelle **avec exactement le même nom**.
 
 | Nom du fichier | Où elle apparaît |
 |---|---|
-| `accueil.jpg` | Grande photo en haut de l'accueil (format vertical idéal) |
+| `accueil.jpg` | Grande photo en haut de l'accueil (format vertical idéal ; pour l'instant, la même que les sourcils microshading) |
 | `portrait.jpg` | Votre photo, partie « Moi, c'est Indie » |
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
@@ -198,7 +200,7 @@ Le nom doit être **exactement** celui du tableau : en minuscules, sans accent, 
 **Taille et format des photos**
 - Format **JPG** obligatoire (pas de HEIC, PNG ni PDF).
 - Gardez-les **légères** : idéalement moins de 500 Ko, environ 1200 pixels de large. Une photo directement sortie du téléphone pèse souvent plus de 5 Mo : elle ralentit beaucoup le site.
-- Photo d'accueil et portrait : format **vertical** (4:5). Photos des prestations : format **horizontal** (4:3).
+- Format **vertical** (4:5) conseillé pour toutes les photos : accueil, portrait et soins.
 
 ---
 
@@ -206,14 +208,14 @@ Le nom doit être **exactement** celui du tableau : en minuscules, sans accent, 
 
 Le logo « DERMOPUR » du site est écrit en texte, avec la police Playfair Display, comme sur vos visuels : il reste net sur tous les écrans. L'icône de l'onglet (`images/favicon.png`, `images/icone.png`) et l'image d'aperçu des partages (`images/partage.jpg`) sont dans le dossier `images`.
 
-Les couleurs sont réglées tout en haut du fichier `style.css` (par exemple `--bordeaux: #5a0f1d;`).
+Les couleurs sont réglées tout en haut du fichier `style.css` : bordeaux velours (`--bordeaux: #4a0d1c;`), vert matcha (`--matcha: #a8b66c;`), doré (`--or: #c9a95c;`) et crème.
 
 ## 5. Les autres textes
 
 Les textes de présentation, les consignes et les horaires sont directement dans les pages :
 
 - `index.html` : l'accueil (accroche, « Moi, c'est Indie », hygiène, déroulement)
-- `prestations.html` : l'introduction de la page des tarifs
+- `prestations.html` : la page « Nos soins » (introduction et tarifs)
 - `conseils.html` : les consignes avant et après la séance
 - `contact.html` : le tableau des horaires et le formulaire
 - `mentions-legales.html` : vos informations légales (SIRET, forme juridique, hébergeur)
@@ -226,7 +228,7 @@ Modifiez seulement le texte visible entre les balises, par exemple `<p>Mon texte
 
 Les demandes envoyées depuis le formulaire arrivent sur **coudret.indie@gmail.com** (service gratuit FormSubmit).
 
-Le client doit obligatoirement remplir son **prénom**, son **nom** et son **numéro de téléphone** : le formulaire refuse l'envoi sans eux. L'e-mail que vous recevez contient aussi la prestation, le créneau choisi, son e-mail (s'il l'a donné) et son message. L'objet de l'e-mail affiche directement le prénom, le nom, le téléphone et le créneau.
+Le client doit obligatoirement remplir son **prénom**, son **nom** et son **numéro de téléphone** : le formulaire refuse l'envoi sans eux. L'e-mail que vous recevez contient aussi le soin choisi, le créneau choisi, son e-mail (s'il l'a donné) et son message. L'objet de l'e-mail affiche directement le prénom, le nom, le téléphone et le créneau.
 
 Si l'envoi ne marche pas (pas de réseau, service indisponible), le site propose au client de vous envoyer sa demande **par WhatsApp**, par e-mail ou de vous appeler.
 

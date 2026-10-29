@@ -3,17 +3,22 @@
    Les couleurs du site sont réglées juste en dessous.
    ========================================================= */
 :root {
-  --bordeaux: #5a0f1d;       /* couleur principale (logo, boutons, titres) */
-  --bordeaux-fonce: #3e0913; /* survol des boutons, pied de page */
-  --bordeaux-doux: #7d3a46;  /* petits titres en capitales */
-  --creme: #f7f1e9;          /* fond général */
-  --ivoire: #fffcf8;         /* fond des cartes */
-  --poudre: #efe4dc;         /* fond des bandes */
-  --filet: #e2d4c8;          /* lignes fines */
-  --encre: #2a1417;          /* texte principal */
-  --encre-douce: #5f4a4d;    /* texte secondaire */
+  /* Palette inspirée du velours bordeaux, du thé matcha et de la cuillère dorée */
+  --bordeaux: #4a0d1c;       /* couleur principale : logo, titres, boutons */
+  --bordeaux-fonce: #2a0610; /* bandeau du haut, pied de page, survols */
+  --bordeaux-doux: #56632a;  /* vert matcha foncé : petits titres, slogan (lisible sur fond clair) */
+  --matcha: #a8b66c;         /* vert matcha : touches de couleur, cadres des photos */
+  --matcha-pale: #e7ecd5;    /* vert très pâle : fonds de bandes */
+  --or: #c9a95c;             /* doré de la cuillère : détails sur fond bordeaux */
+  --or-texte: #85661f;       /* doré lisible sur fond clair (étoiles) */
+  --creme: #f4efe6;          /* fond général */
+  --ivoire: #fbf8f2;         /* fond des cartes */
+  --poudre: #e7ecd5;         /* fond des bandes (vert matcha très pâle) */
+  --filet: #ddd5c4;          /* lignes fines */
+  --encre: #2a1418;          /* texte principal */
+  --encre-douce: #574749;    /* texte secondaire */
   --erreur: #a3182b;
-  --ombre: 0 18px 40px rgba(62, 9, 19, .08);
+  --ombre: 0 18px 40px rgba(42, 6, 16, .10);
   --rayon: 4px;
   --titres: "Playfair Display", Georgia, "Times New Roman", serif;
   --texte: "Jost", "Segoe UI", Arial, sans-serif;
@@ -354,3 +359,72 @@ body { padding-bottom: 76px; }
 .texte-legal h2 { font-size: 1.4rem; margin-top: 2.2rem; }
 .texte-legal h2:first-child { margin-top: 0; }
 .a-completer { background: #fbf3f0; border: 1px dashed var(--bordeaux); padding: 0 .3em; font-style: italic; }
+
+/* =========================================================
+   Palette bordeaux · matcha · or : mise en valeur des visages
+   ========================================================= */
+.bouton--plein:hover { background: var(--matcha); border-color: var(--matcha); color: var(--bordeaux-fonce); }
+.bouton:hover { background: var(--bordeaux); color: #fff; }
+.menu li a:hover { color: var(--bordeaux-doux); }
+.menu li a[aria-current="page"] { border-bottom-color: var(--matcha); }
+.filet { background: var(--matcha); height: 2px; }
+.barre-haut a:hover { color: var(--matcha); text-decoration: none; }
+
+/* Grande photo de l'accueil et portrait : bloc matcha décalé derrière */
+.accueil__photo, .photo-cadre { outline: 0; margin: 0 22px 22px 0; box-shadow: 22px 22px 0 var(--matcha); }
+.photo-cadre { margin: 0 auto 22px; width: calc(100% - 22px); }
+
+/* Bande bordeaux : les visages ressortent sur le velours */
+.section--vin { background: var(--bordeaux); color: #f4efe6; }
+.section--vin h2 { color: #fff; }
+.section--vin .surtitre { color: var(--matcha); }
+.section--vin .intro { color: #eadfe0; }
+.section--vin .filet { background: var(--or); }
+.section--vin .bouton { border-color: var(--matcha); color: #fff; }
+.section--vin .bouton:hover { background: var(--matcha); color: var(--bordeaux-fonce); }
+.section--vin .carte { border: 0; }
+.carte__photo { aspect-ratio: 4 / 5; }
+.carte__photo img { object-position: center 40%; }
+.carte__categorie { color: var(--bordeaux-doux); font-weight: 500; }
+.carte__infos { color: var(--encre-douce); }
+
+/* Fiches des soins : photo verticale encadrée de matcha */
+.prestation__photo { aspect-ratio: 4 / 5; }
+.prestation { border-top: 3px solid var(--matcha); }
+@media (min-width: 900px) { .prestation__photo { aspect-ratio: auto; min-height: 420px; } }
+.categorie-titre { border-bottom: 2px solid var(--matcha); }
+.bon-a-savoir { border-left-color: var(--matcha); background: var(--matcha-pale); }
+.infos .ic, .reperes .ic { color: var(--bordeaux-doux); }
+.tarifs__groupe th { background: var(--matcha-pale); }
+
+/* Étapes, engagements, chronologie */
+.etapes li::before { color: var(--bordeaux-doux); }
+.etapes li, .engagements li { border-top: 3px solid var(--matcha); }
+.chrono { border-left-color: var(--matcha); }
+.chrono li::before { border-color: var(--bordeaux); background: var(--matcha); }
+
+/* Réservation */
+.duree:hover { border-color: var(--matcha); }
+.duree[aria-pressed="true"] .duree__prix { color: var(--matcha); }
+.etape-numero { background: var(--bordeaux); color: #fff; border-color: var(--bordeaux); }
+.heure:hover, .heure:focus-visible { background: var(--bordeaux); color: #fff; }
+.heure--choisie, .heure--choisie:hover { box-shadow: 0 0 0 3px var(--creme), 0 0 0 5px var(--matcha); }
+.semaine__badge { border-color: var(--bordeaux-doux); color: var(--bordeaux-doux); }
+
+/* Avis */
+.avis { border-top: 3px solid var(--matcha); }
+.avis__etoiles { color: var(--or-texte); }
+
+/* Bandeau d'appel et pied de page */
+.appel .surtitre { color: var(--matcha); }
+.appel .filet { background: var(--or); }
+.appel .bouton--clair:hover { background: var(--matcha); border-color: var(--matcha); color: var(--bordeaux-fonce); }
+.pied h2 { color: var(--matcha); }
+.pied .logo__slogan { color: var(--matcha); }
+.pied .logo__sous { color: #eadfe0; }
+.encadre--info { border-color: var(--matcha); border-top: 3px solid var(--matcha); }
+.encadre--attention { background: #fbf3f0; border-color: var(--bordeaux); }
+.moyen:hover { border-color: var(--matcha); }
+.moyen__icone { border-color: var(--matcha); color: var(--bordeaux); background: var(--matcha-pale); }
+.actions-mobiles a.rdv { background: var(--matcha); color: var(--bordeaux-fonce); }
+@media (min-width: 900px) { .prestation--sans-photo { grid-template-columns: 1fr; } }

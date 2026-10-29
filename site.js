@@ -33,8 +33,14 @@
   function lienWhatsapp(texte) { return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texte); }
   // 120 → « 2h », 165 → « 2h45 »
   function texteMinutes(min) { var h = Math.floor(min / 60), m = min % 60; return h ? h + "h" + (m ? (m < 10 ? "0" : "") + m : "") : m + " min"; }
+  // durée et prix d'un soin, avec une fourchette si minutesMin / prixMax sont indiqués
+  function texteDuree(p) { return p.minutesMin ? texteMinutes(p.minutesMin) + " à " + texteMinutes(p.minutes) : texteMinutes(p.minutes); }
+  function textePrix(p, court) {
+    if (!p.prixMax) return prix(p.prix);
+    return court ? p.prix + " – " + prix(p.prixMax) : "Entre " + prix(p.prix) + " et " + prix(p.prixMax);
+  }
   function trouverPrestation(nom) { return prestations.filter(function (p) { return p.nom === nom; })[0] || null; }
-  // prestations rangées par catégorie : [{ nom: "Sourcils", liste: [...] }]
+  // soins rangés par catégorie : [{ nom: "Sourcils", liste: [...] }]
   function parCategorie() {
     var groupes = [];
     prestations.forEach(function (p) {
@@ -90,27 +96,27 @@
   }
   $$("[data-prix-min]").forEach(function (el) { if (prestations.length) el.textContent = prix(prixMin()); });
 
-  /* ---------- Cartes des prestations (page d'accueil) ---------- */
+  /* ---------- Cartes des soins (page d'accueil) ---------- */
   var resume = $("#resume-prestations");
   if (resume) {
     resume.innerHTML = prestations.filter(function (p) { return p.categorie !== "Retouches"; }).map(function (p) {
       return '<article class="carte">' +
         cadrePhoto(p, "carte__photo", "") +
         '<div class="carte__corps"><p class="carte__categorie">' + echapper(p.categorie) + '</p><h3>' + echapper(p.nom) + '</h3>' +
-        '<p class="carte__infos">' + texteMinutes(p.minutes) + ' · ' + prix(p.prix) + '</p>' +
+        '<p class="carte__infos">' + texteDuree(p) + ' · ' + textePrix(p, true) + '</p>' +
         '<a class="carte__lien" href="prestations.html#' + identifiant(p.nom) + '">En savoir plus<span class="cache"> : ' + echapper(p.nom) + '</span> →</a></div>' +
         '</article>';
     }).join("");
   }
 
-  /* ---------- Page « Prestations et tarifs » ---------- */
+  /* ---------- Page « Nos soins » ---------- */
   var tableau = $("#tableau-tarifs");
   if (tableau) {
     tableau.querySelector("tbody").innerHTML = parCategorie().map(function (g) {
       return '<tr class="tarifs__groupe"><th scope="rowgroup" colspan="3">' + echapper(g.nom) + '</th></tr>' +
         g.liste.map(function (p) {
           return '<tr><th scope="row"><a href="#' + identifiant(p.nom) + '">' + echapper(p.nom) + '</a></th>' +
-            '<td>' + texteMinutes(p.minutes) + '</td><td class="prix">' + prix(p.prix) + '</td></tr>';
+            '<td>' + texteDuree(p) + '</td><td class="prix">' + textePrix(p, true) + '</td></tr>';
         }).join("");
     }).join("");
   }
@@ -118,17 +124,17 @@
   if (liste) {
     liste.innerHTML = parCategorie().map(function (g) {
       return '<h2 class="categorie-titre">' + echapper(g.nom) + '</h2>' + g.liste.map(function (p) {
-        return '<article class="prestation" id="' + identifiant(p.nom) + '">' +
+        return '<article class="prestation' + (p.photo ? '' : ' prestation--sans-photo') + '" id="' + identifiant(p.nom) + '">' +
           cadrePhoto(p, "prestation__photo", "Photo : " + p.nom) +
           '<div class="prestation__texte">' +
             '<h3>' + echapper(p.nom) + '</h3>' +
             '<ul class="infos">' +
-              '<li>' + icone("horloge") + 'Durée du rendez-vous : ' + texteMinutes(p.minutes) + '</li>' +
-              '<li>' + icone("euro") + prix(p.prix) + '</li>' +
+              '<li>' + icone("horloge") + 'Durée du rendez-vous : ' + texteDuree(p) + (p.minutesMin ? ' selon la zone' : '') + '</li>' +
+              '<li>' + icone("euro") + textePrix(p) + '</li>' +
             '</ul>' +
             (p.description ? '<p>' + echapper(p.description) + '</p>' : '') +
             (p.bonASavoir ? '<p class="bon-a-savoir"><strong>Bon à savoir :</strong> ' + echapper(p.bonASavoir) + '</p>' : '') +
-            '<p><a class="bouton bouton--plein" href="contact.html?prestation=' + encodeURIComponent(p.nom) + '#rendez-vous">' + icone("calendrier") + 'Réserver cette prestation</a></p>' +
+            '<p><a class="bouton bouton--plein" href="contact.html?prestation=' + encodeURIComponent(p.nom) + '#rendez-vous">' + icone("calendrier") + 'Réserver ce soin</a></p>' +
           '</div></article>';
       }).join("");
     }).join("");
@@ -231,8 +237,8 @@
         g.liste.map(function (p) {
           return '<button type="button" class="duree" data-prestation="' + echapper(p.nom) + '" aria-pressed="false">' +
             '<span class="duree__temps">' + echapper(p.nom) + '</span>' +
-            '<span class="duree__prix">' + prix(p.prix) + '</span>' +
-            '<span class="duree__sous">' + texteMinutes(p.minutes) + '</span></button>';
+            '<span class="duree__prix">' + textePrix(p, true) + '</span>' +
+            '<span class="duree__sous">' + texteDuree(p) + '</span></button>';
         }).join("") + '</div></div>';
     }).join("");
 
@@ -242,7 +248,9 @@
       var etape2 = $("#etape-creneau");
       if (!p) { etape2.hidden = true; return; }
       etape2.hidden = false;
-      $("#prestation-rappel").textContent = p.nom + " (" + texteMinutes(p.minutes) + ", " + prix(p.prix) + ")";
+      $("#prestation-rappel").textContent = p.nom + " (" + texteDuree(p) + ", " + textePrix(p, true) + ")";
+      var noteDuree = $("#note-duree");
+      if (noteDuree) noteDuree.hidden = !p.minutesMin;
 
       var maintenant = new Date();
       var aujourdhui = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate());
@@ -268,7 +276,7 @@
           var contenu;
           if (!c.ouvert) contenu = '<p class="jour-ligne__info">Fermé</p>';
           else if (!c.debuts.length && c.tropTot) contenu = '<p class="jour-ligne__info">Moins de 24h à l\'avance : réservation <a href="' + TELEPHONE_LIEN + '">par téléphone</a></p>';
-          else if (!c.debuts.length) contenu = '<p class="jour-ligne__info">Complet pour cette prestation</p>';
+          else if (!c.debuts.length) contenu = '<p class="jour-ligne__info">Complet pour ce soin</p>';
           else {
             total += c.debuts.length;
             contenu = '<ul class="heures">' + c.debuts.map(function (t) {
@@ -283,8 +291,8 @@
         var badge = s === 0 ? "Cette semaine" : s === 1 ? "Semaine prochaine" : "";
         html += '<section class="semaine"><div class="semaine__titre"><h2>Semaine du ' + jourMois(debutSem) + ' au ' + jourMois(finSem) + '</h2>' +
           (badge ? '<span class="semaine__badge">' + badge + '</span>' : '') + '</div>' +
-          '<p class="semaine__resume">' + (total ? "<strong>" + total + " horaire" + (total > 1 ? "s" : "") + " possible" + (total > 1 ? "s" : "") + "</strong> pour cette prestation." :
-            "Plus de place cette semaine-là pour cette prestation. Appelez-moi : un créneau se libère parfois.") + '</p>' +
+          '<p class="semaine__resume">' + (total ? "<strong>" + total + " horaire" + (total > 1 ? "s" : "") + " possible" + (total > 1 ? "s" : "") + "</strong> pour ce soin." :
+            "Plus de place cette semaine-là pour ce soin. Appelez Indie : un créneau se libère parfois.") + '</p>' +
           (lignes || '<p class="jour-ligne__info">Cette semaine est terminée.</p>') + '</section>';
       }
       zonePlanning.innerHTML = html;
@@ -318,7 +326,7 @@
     var lienDeposer = window.LIEN_DEPOSER_AVIS || "";
     if (avis.length || lienVoir || lienDeposer) {
       sectionAvis.hidden = false;
-      if (!avis.length) $("#avis-note").textContent = "Découvrez les avis de mes clients, directement sur Google.";
+      if (!avis.length) $("#avis-note").textContent = "Découvrez les avis de ses clients, directement sur Google.";
       $("#liste-avis").innerHTML = avis.map(function (a) {
         var n = Math.max(0, Math.min(5, a.etoiles == null ? 5 : a.etoiles));
         return '<figure class="avis"><p class="avis__etoiles" role="img" aria-label="' + n + ' étoiles sur 5">' +
@@ -337,8 +345,8 @@
     var choixPrestation = $("#prestation", formulaire);
     prestations.forEach(function (p) {
       var opt = document.createElement("option");
-      opt.value = p.nom + " – " + texteMinutes(p.minutes) + " – " + prix(p.prix);
-      opt.textContent = p.nom + " (" + prix(p.prix) + ")";
+      opt.value = p.nom + " – " + texteDuree(p) + " – " + textePrix(p, true);
+      opt.textContent = p.nom + " (" + textePrix(p, true) + ")";
       opt.setAttribute("data-nom", p.nom);
       choixPrestation.appendChild(opt);
     });
@@ -365,7 +373,7 @@
       var cible = $("#formulaire");
       if (cible) cible.scrollIntoView({ behavior: "smooth", block: "start" });
     };
-    // le client change de prestation : l'ancien créneau n'a plus de sens
+    // le client change de soin : l'ancien créneau n'a plus de sens
     oublierCreneau = function (nom) {
       choisirPrestation(nom);
       $("#creneau", formulaire).value = "";
@@ -430,7 +438,7 @@
       var lignes = [BONJOUR, "",
         "Prénom : " + v("#prenom"), "Nom : " + v("#nom"), "Téléphone : " + v("#telephone")];
       if (v("#email")) lignes.push("E-mail : " + v("#email"));
-      lignes.push("Prestation : " + v("#prestation"));
+      lignes.push("Soin : " + v("#prestation"));
       if (v("#creneau")) lignes.push("Créneau souhaité : " + v("#creneau"));
       if (v("#message")) lignes.push("", "Message : " + v("#message"));
       return lignes.join("\n");
@@ -476,7 +484,7 @@
         clearTimeout(minuteurMessage); clearTimeout(minuteur);
         boutonEnvoi.disabled = false;
         boutonEnvoi.textContent = texteBouton;
-        montrerErreur("<strong>Je n'ai pas pu confirmer l'envoi de votre demande.</strong> Pour être certain que je la reçoive, vous pouvez " + liensSecours() + ".");
+        montrerErreur("<strong>L'envoi de votre demande n'a pas pu être confirmé.</strong> Pour être certain qu'Indie la reçoive, vous pouvez " + liensSecours() + ".");
       }
       function reussite() {
         if (termine) return;
@@ -487,7 +495,7 @@
       // au bout de 5 secondes : on propose une solution de secours, sans interrompre l'envoi
       var minuteurMessage = setTimeout(function () {
         if (termine) return;
-        montrerInfo("<strong>L'envoi prend plus de temps que prévu.</strong> Vous pouvez patienter encore un instant, ou, pour être certain que je reçoive votre demande, " + liensSecours() + ".");
+        montrerInfo("<strong>L'envoi prend plus de temps que prévu.</strong> Vous pouvez patienter encore un instant, ou, pour être certain qu'Indie reçoive votre demande, " + liensSecours() + ".");
       }, DELAI_MESSAGE);
       var controle = window.AbortController ? new AbortController() : null;
       var minuteur = setTimeout(function () { if (controle) controle.abort(); echec(); }, DELAI_MAXIMUM);

@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <a class="lien-evitement" href="#contenu">Aller directement au contenu</a>
@@ -43,7 +43,7 @@
       <nav id="menu" class="menu" aria-label="Menu principal">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html" aria-current="page">Contact</a></li>
@@ -58,7 +58,7 @@
       <div class="conteneur">
         <p class="surtitre">Contact et rendez-vous</p>
         <h1>Prendre rendez-vous</h1>
-        <p class="intro">Trois étapes simples : choisissez votre prestation, puis votre horaire, puis laissez-moi vos coordonnées. Je vous confirme ensuite votre rendez-vous. Vous préférez en parler d'abord ? Le diagnostic est offert.</p>
+        <p class="intro">Trois étapes simples : choisissez votre soin, puis votre horaire, puis laissez vos coordonnées. Indie vous confirme ensuite votre rendez-vous. Vous préférez en parler d'abord ? Le premier diagnostic est offert au studio.</p>
       </div>
     </section>
     <section class="section" id="rendez-vous" style="padding-top:2.5rem;padding-bottom:1rem">
@@ -68,14 +68,15 @@
           <a class="bouton" href="https://wa.me/33766230430?text=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous." target="_blank" rel="noopener" data-whatsapp><svg class="ic" aria-hidden="true"><use href="images/icones.svg#whatsapp"/></svg> WhatsApp</a>
           <a class="bouton" href="https://www.instagram.com/dermopur_orleans/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#instagram"/></svg> Instagram</a>
         </div>
-        <h2 class="etape-titre"><span class="etape-numero">1</span> Choisissez votre prestation</h2>
-        <div id="choix-prestation" role="group" aria-label="Prestation souhaitée"></div>
-        <noscript><p>Pour voir le planning, merci d'activer JavaScript ou de m'appeler au 07 66 23 04 30.</p></noscript>
+        <h2 class="etape-titre"><span class="etape-numero">1</span> Choisissez votre soin</h2>
+        <div id="choix-prestation" role="group" aria-label="Soin souhaité"></div>
+        <noscript><p>Pour voir le planning, merci d'activer JavaScript ou d'appeler Indie au 07 66 23 04 30.</p></noscript>
 
         <div id="etape-creneau" class="etape-creneau" hidden>
           <h2 class="etape-titre"><span class="etape-numero">2</span> Choisissez votre heure de début</h2>
-          <p class="etape-aide">Prestation choisie : <strong id="prestation-rappel"></strong>. Les heures affichées sont les heures de <strong>début</strong> encore possibles. Touchez celle qui vous convient.</p>
-          <p class="etape-aide"><strong>Pour un rendez-vous dans moins de 24h</strong>, appelez-moi ou écrivez-moi sur WhatsApp : c'est le plus rapide.</p>
+          <p class="etape-aide">Soin choisi : <strong id="prestation-rappel"></strong>. Les heures affichées sont les heures de <strong>début</strong> encore possibles. Touchez celle qui vous convient.</p>
+          <p class="etape-aide" id="note-duree" hidden>La durée d'une retouche dépend de la zone : le planning prévoit la durée la plus longue, et Indie l'ajuste avec vous.</p>
+          <p class="etape-aide"><strong>Pour un rendez-vous dans moins de 24h</strong>, appelez Indie ou écrivez-lui sur WhatsApp : c'est le plus rapide.</p>
           <div id="planning" aria-live="polite"></div>
         </div>
       </div>
@@ -92,7 +93,7 @@
           <p style="margin-top:1rem"><a href="https://www.google.com/maps/search/?api=1&amp;query=15%20rue%20du%20G%C3%A9n%C3%A9ral%20de%20Gaulle%2045650%20Saint-Jean-le-Blanc" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#lieu"/></svg> Ouvrir l'itinéraire dans Google Maps</a></p>
 
           <h2 style="margin-top:2.5rem">Horaires</h2>
-          <p>Uniquement sur rendez-vous.</p>
+          <p>Sur rendez-vous uniquement.</p>
           <table class="horaires">
             <caption class="cache">Horaires des rendez-vous</caption>
             <tbody>
@@ -105,7 +106,7 @@
               <tr><th scope="row">Dimanche</th><td>Fermé</td></tr>
             </tbody>
           </table>
-          <p style="margin-top:1rem">Je suis joignable aux mêmes horaires, par téléphone, WhatsApp ou message. Les messages et le formulaire peuvent être envoyés à toute heure.</p>
+          <p style="margin-top:1rem">Indie est joignable aux mêmes horaires, par téléphone, WhatsApp ou message. Les messages et le formulaire peuvent être envoyés à toute heure.</p>
         </div>
 
         <div class="formulaire" id="formulaire">
@@ -122,9 +123,9 @@
 
           <div class="encadre encadre--attention avertissement" role="note">
             <svg class="ic" aria-hidden="true"><use href="images/icones.svg#horloge"/></svg>
-            <p style="margin:0"><strong>Votre réservation n'est pas automatique.</strong> Quand vous choisissez un horaire, vous m'envoyez une <strong>demande</strong>. Votre rendez-vous est validé <strong>uniquement quand je vous l'ai confirmé</strong> (par téléphone, SMS ou WhatsApp). Je réponds du mardi au samedi, de 10h à 19h.</p>
+            <p style="margin:0"><strong>Votre réservation n'est pas automatique.</strong> Quand vous choisissez un horaire, vous envoyez une <strong>demande</strong>. Votre rendez-vous est validé <strong>uniquement après la confirmation d'Indie</strong> (par téléphone, SMS ou WhatsApp). Il répond du mardi au samedi, de 10h à 19h.</p>
           </div>
-          <p style="margin-top:1.2rem">Remplissez ce petit formulaire : je vous recontacte pour confirmer le rendez-vous. Les champs marqués d'une <span class="obligatoire">*</span> sont obligatoires.</p>
+          <p style="margin-top:1.2rem">Remplissez ce petit formulaire : Indie vous recontacte pour confirmer le rendez-vous. Les champs marqués d'une <span class="obligatoire">*</span> sont obligatoires.</p>
 
           <form id="formulaire-rdv" action="https://formsubmit.co/coudret.indie@gmail.com" method="POST" novalidate>
             <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous – site Dermopur">
@@ -144,7 +145,7 @@
               </div>
             </div>
             <div class="champ">
-              <label for="telephone">Votre numéro de téléphone <span class="obligatoire">*</span> <span class="aide">Pour que je puisse confirmer votre rendez-vous.</span></label>
+              <label for="telephone">Votre numéro de téléphone <span class="obligatoire">*</span> <span class="aide">Pour qu'Indie puisse confirmer votre rendez-vous.</span></label>
               <input id="telephone" name="Téléphone" type="tel" autocomplete="tel" inputmode="tel" required>
             </div>
             <div class="champ">
@@ -152,10 +153,10 @@
               <input id="email" name="email" type="email" autocomplete="email">
             </div>
             <div class="champ">
-              <label for="prestation">Prestation souhaitée</label>
+              <label for="prestation">Soin souhaité</label>
               <select id="prestation" name="Prestation">
                 <option value="Je ne sais pas encore">Je ne sais pas encore</option>
-                <option value="Diagnostic offert">Diagnostic offert (premier échange)</option>
+                <option value="Premier diagnostic offert">Premier diagnostic offert</option>
               </select>
             </div>
             <div class="champ">
@@ -173,7 +174,7 @@
             <button class="bouton bouton--plein bouton--grand" type="submit" style="width:100%">Envoyer ma demande de rendez-vous</button>
             <p class="ou-separateur" data-whatsapp><span>ou</span></p>
             <button class="bouton bouton--grand" type="button" id="envoi-whatsapp" data-whatsapp style="width:100%"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#whatsapp"/></svg> Envoyer ma demande par WhatsApp</button>
-            <p class="aide" style="margin-top:1rem;font-size:.95rem"><strong>Rappel :</strong> votre rendez-vous n'est validé qu'après ma confirmation.</p>
+            <p class="aide" style="margin-top:1rem;font-size:.95rem"><strong>Rappel :</strong> votre rendez-vous n'est validé qu'après la confirmation d'Indie.</p>
           </form>
         </div>
       </div>
@@ -181,11 +182,11 @@
 
     <section class="section">
       <div class="conteneur">
-        <h2 class="centre">Vous préférez me contacter directement ?</h2>
+        <h2 class="centre">Vous préférez contacter Indie directement ?</h2>
         <span class="filet" style="margin-inline:auto"></span>
         <div class="moyens">
           <a class="moyen" href="tel:+33766230430"><span class="moyen__icone"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#tel"/></svg></span><span><strong>Par téléphone</strong><span>07 66 23 04 30</span></span></a>
-          <a class="moyen" href="https://wa.me/33766230430?text=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous." target="_blank" rel="noopener" data-whatsapp><span class="moyen__icone"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#whatsapp"/></svg></span><span><strong>Par WhatsApp</strong><span>Écrivez-moi un message</span></span></a>
+          <a class="moyen" href="https://wa.me/33766230430?text=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous." target="_blank" rel="noopener" data-whatsapp><span class="moyen__icone"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#whatsapp"/></svg></span><span><strong>Par WhatsApp</strong><span>Écrivez-lui un message</span></span></a>
           <a class="moyen" href="https://www.instagram.com/dermopur_orleans/" target="_blank" rel="noopener"><span class="moyen__icone"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#instagram"/></svg></span><span><strong>Sur Instagram</strong><span>@dermopur_orleans</span></span></a>
           <a class="moyen" href="mailto:coudret.indie@gmail.com"><span class="moyen__icone"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#mail"/></svg></span><span><strong>Par e-mail</strong><span>coudret.indie@gmail.com</span></span></a>
         </div>
@@ -197,10 +198,10 @@
     <div class="conteneur pied__grille">
       <div>
         <a href="index.html" class="logo"><span class="logo__nom">DERMOPUR</span><span class="logo__slogan">« L'élégance du détail »</span><span class="logo__sous">Maquillage semi-permanent</span></a>
-        <p>Maquillage semi-permanent sur rendez-vous à Saint-Jean-le-Blanc, près d'Orléans, par Indie Coudret.</p>
+        <p>Maquillage semi-permanent à Saint-Jean-le-Blanc, près d'Orléans, entre les mains d'Indie Coudret.</p>
       </div>
       <div>
-        <h2>Me contacter</h2>
+        <h2>Contact</h2>
         <ul>
           <li><a href="tel:+33766230430"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#tel"/></svg> 07 66 23 04 30</a></li>
           <li><a href="mailto:coudret.indie@gmail.com"><svg class="ic" aria-hidden="true"><use href="images/icones.svg#mail"/></svg> coudret.indie@gmail.com</a></li>
@@ -211,13 +212,13 @@
       <div>
         <h2>Le cabinet</h2>
         <p>Dermopur<br>15 rue du Général de Gaulle<br>45650 Saint-Jean-le-Blanc</p>
-        <p>Du mardi au samedi, de 10h à 19h.<br>Uniquement sur rendez-vous.</p>
+        <p>Du mardi au samedi, de 10h à 19h,<br>sur rendez-vous uniquement.</p>
       </div>
       <div>
         <h2>Pages</h2>
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="prestations.html">Nos soins</a></li>
           <li><a href="conseils.html">Conseils</a></li>
           <li><a href="disponibilites.html">Disponibilités</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -240,6 +241,6 @@
 
   <script src="mes-contenus/prestations-et-tarifs.js"></script>
   <script src="mes-contenus/planning.js"></script>
-  <script src="site.js?v=1"></script>
+  <script src="site.js?v=2"></script>
 </body>
 </html>
