@@ -102,13 +102,13 @@ Vous n'avez qu'à tenir à jour 3 choses.
 ```
 var HORAIRES_HABITUELS = {
   lundi:    "fermé",
-  jeudi:    "13h00-19h00",
+  jeudi:    "13h00-19h00, 18h00",
   ...
 };
 ```
 - Une plage : `"13h00-19h00"` (le rendez-vous doit être fini avant 19h).
 - Plusieurs plages : `"13h00-15h00, 16h00-19h00"` (par exemple pour une pause).
-- Une heure de début seule : `"17h00"` (le rendez-vous commence à 17h, quelle que soit sa durée).
+- Une heure de début seule : `"18h00"` (le rendez-vous commence à 18h, quelle que soit sa durée : il peut donc se terminer après 19h). C'est ce qui est utilisé aujourd'hui pour le dernier créneau du jeudi, du vendredi et du samedi.
 
 Si vous changez vos horaires, pensez aussi à changer le tableau des horaires de la page `contact.html`.
 

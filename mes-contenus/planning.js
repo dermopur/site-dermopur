@@ -22,14 +22,16 @@
 
 /* ---------- 1. MES HORAIRES HABITUELS ----------
    Les heures pendant lesquelles un rendez-vous peut avoir lieu.
-   Le rendez-vous doit être terminé avant la fin de la plage. */
+   Le rendez-vous doit être terminé avant la fin de la plage.
+   « 18h00 » ajouté après la plage : c'est un dernier horaire de début
+   toujours proposé à 18h, même si le soin se termine après 19h. */
 var HORAIRES_HABITUELS = {
   lundi:    "fermé",
   mardi:    "fermé",
   mercredi: "fermé",
-  jeudi:    "13h00-19h00",
-  vendredi: "13h00-19h00",
-  samedi:   "13h00-19h00",
+  jeudi:    "13h00-19h00, 18h00",
+  vendredi: "13h00-19h00, 18h00",
+  samedi:   "13h00-19h00, 18h00",
   dimanche: "fermé"
 };
 
