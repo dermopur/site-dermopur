@@ -206,9 +206,9 @@ Le nom doit être **exactement** celui du tableau : en minuscules, sans accent, 
 
 ## 4. Votre logo et vos couleurs
 
-Le logo « DERMOPUR » du site est écrit en texte, avec la police Playfair Display, comme sur vos visuels : il reste net sur tous les écrans. L'icône de l'onglet (`images/favicon.png`, `images/icone.png`) et l'image d'aperçu des partages (`images/partage.jpg`) sont dans le dossier `images`.
+Le logo « DERMOPUR » du site est écrit en texte, avec la police Cormorant Garamond : il reste net sur tous les écrans. L'icône de l'onglet (`images/favicon.png`, `images/icone.png`) et l'image d'aperçu des partages (`images/partage.jpg`) sont dans le dossier `images`.
 
-Les couleurs sont réglées tout en haut du fichier `style.css` : bordeaux velours (`--bordeaux: #4a0d1c;`), vert sauge (`--matcha: #7c8964;` et `--bordeaux-doux: #4b5638;` pour les petits titres), doré (`--or: #c9a95c;`) et crème.
+Les couleurs et les polices sont réglées tout en haut du fichier `style.css` : palette « grain de sable » avec sable (`--creme: #f2ece4;`), lin (`--ivoire: #f8f4ee;`), pierre (`--pierre: #e8dfd3;`), taupe (`--taupe: #6e5e50;`), nude (`--nude: #b9927f;`) et cacao (`--cacao: #4a3830;`). Titres en Cormorant Garamond, texte en Montserrat. Le léger grain du fond est réglé par la ligne `--grain`.
 
 ## 5. Les autres textes
 
