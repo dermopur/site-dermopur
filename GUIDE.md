@@ -169,7 +169,7 @@ Toutes les photos vont dans le dossier **`photos`**. Toutes les photos sont en p
 
 | Nom du fichier | Où elle apparaît |
 |---|---|
-| `accueil.jpg` | Grande photo en haut de l'accueil : le cabinet (format vertical idéal) |
+| `accueil.jpg` | Grande photo en haut de l'accueil : le tracé poil à poil (format vertical idéal) |
 | `portrait.jpg` | Votre photo, partie « Moi, c'est Indie » |
 | `sourcils-hairstroke.jpg` | Sourcils Hairstroke / Poil à poil |
 | `sourcils-microshading.jpg` | Sourcils Microshading |
