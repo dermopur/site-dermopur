@@ -242,19 +242,24 @@ Si l'envoi ne marche pas (pas de réseau, service indisponible), le site propose
 1. Sur GitHub, ouvrez votre dépôt `site-dermopur`.
 2. Allez dans **Settings** (Paramètres) → **Pages** (menu de gauche).
 3. Dans « Branch », choisissez **main** et le dossier **/ (root)**, puis **Save**.
-4. Après 1 à 2 minutes, le site est visible à l'adresse `https://dermopur.github.io/site-dermopur/`.
+4. Après 1 à 2 minutes, le site est visible à l'adresse `https://dermopur.github.io/site-dermopur/` ; une fois le domaine branché (point b), il s'ouvre sur `https://dermo-pur.com`.
 
 > Le dépôt doit être **public** pour utiliser GitHub Pages gratuitement.
 
-### b) Brancher votre nom de domaine
-1. Chez le site où vous avez acheté le nom de domaine (OVH, IONOS, Gandi…), ouvrez la **zone DNS** du domaine.
-2. Ajoutez 4 lignes de type **A** pour le domaine (champ « sous-domaine » vide) :
-   `185.199.108.153` — `185.199.109.153` — `185.199.110.153` — `185.199.111.153`
-3. Ajoutez une ligne de type **CNAME** : sous-domaine `www` → `dermopur.github.io.`
-4. Supprimez les anciennes lignes A ou CNAME qui existaient déjà pour le domaine et `www`.
-5. Sur GitHub, dans **Settings → Pages → Custom domain**, écrivez votre domaine puis **Save**.
-6. Attendez quelques heures (parfois jusqu'à 24h), puis cochez **Enforce HTTPS** (le petit cadenas).
-7. Remplacez ensuite l'adresse `https://dermopur.github.io/site-dermopur/` par votre domaine dans `sitemap.xml`, `robots.txt` et en haut de chaque page (lignes `canonical`, `og:url`, `og:image` et le bloc `application/ld+json` de `index.html`). Je peux le faire pour vous.
+### b) Votre nom de domaine : dermo-pur.com (déjà branché)
+
+Le site est relié au domaine **dermo-pur.com**, acheté chez OVH. Rien à refaire, mais voici comment c'est réglé, au cas où il faudrait le vérifier.
+
+**Chez OVH** (espace client, Web Cloud, Noms de domaine, dermo-pur.com, onglet **Zone DNS**) :
+- 4 lignes de type **A**, sous-domaine `@`, vers `185.199.108.153`, `185.199.109.153`, `185.199.110.153` et `185.199.111.153` ;
+- 1 ligne de type **CNAME**, sous-domaine `www`, vers `dermopur.github.io.` (avec le point final) ;
+- à ne **jamais supprimer** : les lignes **MX**, **SPF**, **SRV** et les CNAME `autodiscover`, `autoconfig`, `imap`, `mail`, `pop3`, `smtp` : elles font marcher les e-mails du domaine.
+
+**Sur GitHub** (dépôt `site-dermopur`, Settings, Pages) :
+1. Dans **Custom domain**, le nom `dermo-pur.com` doit être écrit. Le fichier `CNAME` du site contient la même chose.
+2. Quand GitHub a vérifié le domaine (coche verte), cochez **Enforce HTTPS** : c'est le petit cadenas.
+
+Après un changement de DNS, la propagation prend de quelques minutes à 24 heures. Pour la suivre : site **dnschecker.org**, domaine `dermo-pur.com`, type A.
 
 ### c) Dernière étape
 Dans `mentions-legales.html`, l'hébergeur indiqué est GitHub. Si un jour vous changez d'hébergeur, pensez à le modifier.

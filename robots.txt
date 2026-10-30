@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dermopur.github.io/site-dermopur/sitemap.xml
+Sitemap: https://dermo-pur.com/sitemap.xml
